@@ -1,0 +1,59 @@
+xAI CMS 伪静态规则设置
+========================================
+
+为了确保 xAI CMS 的路由功能正常工作，您必须配置 Web 服务器的伪静态（Rewrite）规则。
+
+1. Nginx 配置 (推荐)
+----------------------------------------
+适用环境：Nginx, 宝塔面板 (BT Panel)
+
+[宝塔面板设置方法]
+1. 点击“网站” -> “设置” -> “伪静态”。
+2. 粘贴下方代码并保存。
+
+[规则代码]
+location / {
+    try_files $uri $uri/ /index.php?$query_string;
+}
+
+注意：请确保网站运行目录已指向 /public。
+
+2. Apache 配置
+----------------------------------------
+适用环境：Apache, XAMPP, WAMP
+
+项目 public 目录下已包含 .htaccess 文件。
+确保 Apache 开启了 mod_rewrite 模块即可。
+
+[.htaccess 内容参考]
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+3. IIS 配置
+----------------------------------------
+适用环境：Windows Server IIS
+
+在网站根目录下创建 web.config 文件：
+
+[web.config 内容]
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <system.webServer>
+        <rewrite>
+            <rules>
+                <rule name="Rewrite to index.php" stopProcessing="true">
+                    <match url="^" ignoreCase="false" />
+                    <conditions logicalGrouping="MatchAll">
+                        <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" />
+                        <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
+                    </conditions>
+                    <action type="Rewrite" url="index.php" />
+                </rule>
+            </rules>
+        </rewrite>
+    </system.webServer>
+</configuration>

@@ -1,0 +1,17 @@
+.git
+.gitignore
+.env
+.env.example
+Dockerfile
+docker-compose.yml
+.dockerignore
+*.md
+node_modules
+vendor
+public/uploads/*
+!public/uploads/.gitkeep
+*.log
+content/cache/*
+!content/cache/.gitkeep
+.DS_Store
+Thumbs.db

@@ -1,0 +1,21 @@
+server {
+    listen 80;
+    server_name example.com; # 请替换为您的域名
+    root /path/to/geopulse-cms/php_backend/public; # 请替换为实际的 public 目录绝对路径
+    index index.php index.html;
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    location ~ \.php$ {
+        fastcgi_pass 127.0.0.1:9000; # 或者 unix:/tmp/php-cgi.sock
+        fastcgi_index index.php;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+}

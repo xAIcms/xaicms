@@ -1,0 +1,30 @@
+# Environment
+.env
+config.php
+
+# Dependencies
+vendor/
+node_modules/
+
+# Uploads
+public/uploads/*
+!public/uploads/.gitkeep
+
+# Cache / temp
+content/cache/*
+*.log
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Docker
+db_data/
+
+# Tests
+coverage/
+.phpunit.result.cache

@@ -1,0 +1,158 @@
+:root {
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --bg: #f8fafc;
+    --card-bg: #ffffff;
+    --text: #0f172a;
+    --text-light: #64748b;
+    --border: #e2e8f0;
+    --success: #10b981;
+    --error: #ef4444;
+}
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+.container {
+    background: var(--card-bg);
+    width: 100%;
+    max-width: 600px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+.header {
+    background: var(--primary);
+    color: white;
+    padding: 24px;
+    text-align: center;
+}
+.header h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+}
+.header p {
+    margin: 8px 0 0;
+    opacity: 0.9;
+    font-size: 14px;
+}
+.content {
+    padding: 32px;
+}
+.step {
+    display: none;
+}
+.step.active {
+    display: block;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 14px;
+}
+.form-control {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 100%;
+}
+.btn-primary {
+    background-color: var(--primary);
+    color: white;
+}
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+}
+.alert {
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+.alert-error {
+    background-color: #fef2f2;
+    color: var(--error);
+    border: 1px solid #fee2e2;
+}
+.alert-success {
+    background-color: #ecfdf5;
+    color: var(--success);
+    border: 1px solid #d1fae5;
+}
+
+.btn-primary:disabled {
+    background-color: var(--text-light);
+    cursor: not-allowed;
+}
+.check-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border: 1px solid var(--border);
+    margin-bottom: 8px;
+    border-radius: 6px;
+}
+.status-badge {
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 9999px;
+    font-weight: 600;
+}
+.status-ok {
+    background-color: #dcfce7;
+    color: #166534;
+}
+.status-err {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+.progress-log {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 16px;
+    border-radius: 6px;
+    font-family: monospace;
+    font-size: 12px;
+    height: 200px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+}
+.progress-line {
+    margin-bottom: 4px;
+}
+.progress-success { color: #4ade80; }
+.progress-error { color: #f87171; }
