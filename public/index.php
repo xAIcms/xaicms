@@ -447,6 +447,18 @@ if (strpos($uri, '/user') === 0) {
         exit;
     }
 
+    // Template Management
+    if ($parts[1] === 'templates') {
+        require __DIR__ . '/../templates/admin/templates_list.php';
+        exit;
+    }
+
+    // System Update
+    if ($parts[1] === 'update') {
+        require __DIR__ . '/../templates/admin/update.php';
+        exit;
+    }
+
     // Article Management
     if ($parts[1] === 'articles') {
         $action = $parts[2] ?? 'list';
