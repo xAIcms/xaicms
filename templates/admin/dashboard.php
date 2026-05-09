@@ -191,6 +191,8 @@ ob_start();
 
 
 
+<?php do_action('admin_dashboard_widgets'); ?>
+
 <?php
 $content = ob_get_clean();
 include __DIR__ . '/../layout.php';

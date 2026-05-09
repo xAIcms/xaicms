@@ -144,6 +144,7 @@
                     <!-- Operations -->
                     <?php 
                     $opsActive = (
+                        strpos($uri, '/admin/plugins') !== false ||
                         strpos($uri, '/admin/announcements') !== false || 
                         strpos($uri, '/admin/system-updates') !== false || 
                         strpos($uri, '/admin/spider-logs') !== false
@@ -158,6 +159,9 @@
                             <ul class="nav flex-column ms-3 border-start ps-2 my-1">
                                 <li class="nav-item">
                                     <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/announcements') !== false) ? 'active' : ''; ?>" href="/admin/announcements">平台公告</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/plugins') !== false) ? 'active' : ''; ?>" href="/admin/plugins">🔌 插件管理</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/system-updates') !== false) ? 'active' : ''; ?>" href="/admin/system-updates">系统更新</a>

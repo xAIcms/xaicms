@@ -66,6 +66,10 @@ class Settings {
         return $stmt->execute([$key, $value, $value]);
     }
 
+    public static function set($key, $value) {
+        return self::update($key, $value);
+    }
+
     public static function updateMany($data) {
         $pdo = Database::getInstance()->getConnection();
         $pdo->beginTransaction();

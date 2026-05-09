@@ -6,6 +6,27 @@ session_start([
     'cookie_samesite' => 'Strict'
 ]);
 
+// ── Plugin System: Hooks + Auto-loader ──
+require_once __DIR__ . '/../src/Core/Hooks.php';
+require_once __DIR__ . '/../src/Core/Plugin.php';
+
+// Make hook functions globally available (WordPress-style)
+function add_action(string $tag, callable $callback, int $priority = 10, int $acceptedArgs = 1): void {
+    Hooks::addAction($tag, $callback, $priority, $acceptedArgs);
+}
+function add_filter(string $tag, callable $callback, int $priority = 10, int $acceptedArgs = 1): void {
+    Hooks::addFilter($tag, $callback, $priority, $acceptedArgs);
+}
+function do_action(string $tag, ...$args): void {
+    Hooks::doAction($tag, ...$args);
+}
+function apply_filters(string $tag, $value, ...$args) {
+    return Hooks::applyFilters($tag, $value, ...$args);
+}
+
+// Load active plugins (must be before any hook execution)
+Plugin::loadActive();
+
 // 简单的路由分发器
 require_once __DIR__ . '/../src/Models/Settings.php';
 require_once __DIR__ . '/../src/Models/Article.php';
@@ -420,6 +441,12 @@ if (strpos($uri, '/user') === 0) {
         }
     }
 
+    // Plugin Management
+    if ($parts[1] === 'plugins') {
+        require __DIR__ . '/../templates/admin/plugins_list.php';
+        exit;
+    }
+
     // Article Management
     if ($parts[1] === 'articles') {
         $action = $parts[2] ?? 'list';
@@ -447,6 +474,7 @@ if (strpos($uri, '/user') === 0) {
                 Csrf::validateOrDie();
                 try {
                     $newId = Article::create($_POST);
+                    do_action('article_saved', $newId, $_POST);
                     if (isset($_POST['tags'])) {
                         $tags = explode(',', $_POST['tags']);
                         Article::syncTags($newId, $tags);
