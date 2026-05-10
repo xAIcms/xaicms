@@ -7,6 +7,14 @@ https://github.com/xAIcms/xaicms
 
 15 commits / MIT / Docker / 双语 README
 
+### Language System (v1.1.1)
+- `language` — frontend/public site language (for SEO targeting)
+- `admin_language` — admin panel language (for operator convenience)
+- AI generation language is per-api-config, independent of site language
+- Both stored in: config.php + settings table
+- Settable at: install wizard Step 3 + admin settings Basic tab
+- backend layout.php html lang reads admin_language
+
 ### Core Systems
 | System | Files |
 |---|---|

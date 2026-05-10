@@ -24,4 +24,6 @@ return [
         'default_model' => getenv('AI_MODEL') ?: 'deepseek-v4-flash',
         'pro_model' => getenv('AI_PRO_MODEL') ?: 'deepseek-v4-pro',
     ],
+    'language' => getenv('SITE_LANGUAGE') ?: 'zh-CN',
+    'admin_language' => getenv('ADMIN_LANGUAGE') ?: 'zh-CN',
 ];

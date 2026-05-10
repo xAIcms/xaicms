@@ -19,6 +19,7 @@ class Settings {
             'siteKeywords' => 'CMS, AI, SEO',
             'siteUrl' => 'http://localhost',
             'language' => 'zh-CN',
+            'admin_language' => 'zh-CN',
             'geoRegion' => 'CN',
             'geoPlacename' => '',
             'geoPosition' => '',

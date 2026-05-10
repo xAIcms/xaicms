@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="<?php 
+    $lang = $settings['admin_language'] ?? $settings['language'] ?? 'zh-CN';
+    echo htmlspecialchars($lang);
+?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

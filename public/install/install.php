@@ -84,6 +84,7 @@ try {
             $admin_email = $_POST['admin_email'] ?? '';
             $admin_pass = $_POST['admin_pass'] ?? '';
             $site_language = $_POST['site_language'] ?? 'en-US';
+            $admin_language = $_POST['admin_language'] ?? 'en-US';
 
             $logs = [];
 
@@ -130,12 +131,14 @@ try {
 
             // Save site language to settings
             $pdo->exec("UPDATE settings SET `value` = " . $pdo->quote($site_language) . " WHERE `key` = 'language'");
-            $logs[] = "站点语言设置: $site_language";
+            $pdo->exec("UPDATE settings SET `value` = " . $pdo->quote($admin_language) . " WHERE `key` = 'admin_language'");
+            $logs[] = "站点语言设置: $site_language, 后台语言: $admin_language";
 
             // 5. Write Config
             $configContent = "<?php\n\nreturn [\n    'db' => [\n        'host' => '$host',\n        'port' => '$port',\n        'database' => '$name',\n        'username' => '$user',\n        'password' => '$pass',\n        'charset' => 'utf8mb4',\n    ],\n    'app_url' => 'http://' . \$_SERVER['HTTP_HOST'],
-    'language' => '$site_language',\n];\n";
-            
+    'language' => '$site_language',
+    'admin_language' => '$admin_language',
+];\n";
             $configFile = __DIR__ . '/../../config.php';
             if (file_put_contents($configFile, $configContent)) {
                 $logs[] = "配置文件写入成功: config.php";

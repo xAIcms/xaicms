@@ -70,6 +70,16 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label>Admin Panel Language / 后台管理语言</label>
+                        <select name="admin_language" class="form-control" style="width:100%;padding:10px;">
+                            <option value="zh-CN" selected>简体中文 (zh-CN)</option>
+                            <option value="en-US">English (en-US)</option>
+                            <option value="zh-TW">繁体中文 (zh-TW)</option>
+                            <option value="ja-JP">日本語 (ja-JP)</option>
+                            <option value="ko-KR">한국어 (ko-KR)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label>管理员邮箱</label>
                         <input type="email" name="admin_email" class="form-control" value="admin@example.com" required>
                     </div>
