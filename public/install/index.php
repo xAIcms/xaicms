@@ -62,11 +62,20 @@
                     <div class="form-group">
                         <label>Site Language / 站点语言</label>
                         <select name="site_language" class="form-control" style="width:100%;padding:10px;">
-                            <option value="zh-CN">简体中文 (zh-CN)</option>
                             <option value="en-US" selected>English (en-US)</option>
-                            <option value="zh-TW">繁体中文 (zh-TW)</option>
                             <option value="ja-JP">日本語 (ja-JP)</option>
                             <option value="ko-KR">한국어 (ko-KR)</option>
+                            <option value="de-DE">Deutsch (de-DE)</option>
+                            <option value="fr-FR">Français (fr-FR)</option>
+                            <option value="es-ES">Español (es-ES)</option>
+                            <option value="ru-RU">Русский (ru-RU)</option>
+                            <option value="pt-BR">Português (pt-BR)</option>
+                            <option value="ar-SA">العربية (ar-SA)</option>
+                            <option value="th-TH">ไทย (th-TH)</option>
+                            <option value="vi-VN">Tiếng Việt (vi-VN)</option>
+                            <option value="id-ID">Bahasa Indonesia (id-ID)</option>
+                            <option value="zh-CN">简体中文 (zh-CN)</option>
+                            <option value="zh-TW">繁體中文 (zh-TW)</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -74,9 +83,18 @@
                         <select name="admin_language" class="form-control" style="width:100%;padding:10px;">
                             <option value="zh-CN" selected>简体中文 (zh-CN)</option>
                             <option value="en-US">English (en-US)</option>
-                            <option value="zh-TW">繁体中文 (zh-TW)</option>
                             <option value="ja-JP">日本語 (ja-JP)</option>
                             <option value="ko-KR">한국어 (ko-KR)</option>
+                            <option value="de-DE">Deutsch (de-DE)</option>
+                            <option value="fr-FR">Français (fr-FR)</option>
+                            <option value="es-ES">Español (es-ES)</option>
+                            <option value="ru-RU">Русский (ru-RU)</option>
+                            <option value="pt-BR">Português (pt-BR)</option>
+                            <option value="ar-SA">العربية (ar-SA)</option>
+                            <option value="th-TH">ไทย (th-TH)</option>
+                            <option value="vi-VN">Tiếng Việt (vi-VN)</option>
+                            <option value="id-ID">Bahasa Indonesia (id-ID)</option>
+                            <option value="zh-TW">繁體中文 (zh-TW)</option>
                         </select>
                     </div>
                     <div class="form-group">

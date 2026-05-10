@@ -18,7 +18,7 @@ class Settings {
             'siteDescription' => 'Enterprise Global Content Management System',
             'siteKeywords' => 'CMS, AI, SEO',
             'siteUrl' => 'http://localhost',
-            'language' => 'zh-CN',
+            'language' => 'en-US',
             'admin_language' => 'zh-CN',
             'geoRegion' => 'CN',
             'geoPlacename' => '',

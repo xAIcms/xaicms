@@ -136,21 +136,39 @@ ob_start();
                                 <div class="col-md-6">
                                     <label class="form-label fw-medium">Site Language</label>
                                     <select name="settings[language]" class="form-select bg-light border-0">
-                                        <option value="zh-CN" <?php echo ($settings['language'] ?? '') === 'zh-CN' ? 'selected' : ''; ?>>简体中文</option>
-                                        <option value="en-US" <?php echo ($settings['language'] ?? '') === 'en-US' ? 'selected' : ''; ?>>English</option>
-                                        <option value="zh-TW" <?php echo ($settings['language'] ?? '') === 'zh-TW' ? 'selected' : ''; ?>>繁體中文</option>
-                                        <option value="ja-JP" <?php echo ($settings['language'] ?? '') === 'ja-JP' ? 'selected' : ''; ?>>日本語</option>
-                                        <option value="ko-KR" <?php echo ($settings['language'] ?? '') === 'ko-KR' ? 'selected' : ''; ?>>한국어</option>
+                                        <option value="en-US" <?php echo ($settings['language'] ?? '') === 'en-US' ? 'selected' : ''; ?>>English (en-US)</option>
+                                        <option value="ja-JP" <?php echo ($settings['language'] ?? '') === 'ja-JP' ? 'selected' : ''; ?>>日本語 (ja-JP)</option>
+                                        <option value="ko-KR" <?php echo ($settings['language'] ?? '') === 'ko-KR' ? 'selected' : ''; ?>>한국어 (ko-KR)</option>
+                                        <option value="de-DE" <?php echo ($settings['language'] ?? '') === 'de-DE' ? 'selected' : ''; ?>>Deutsch (de-DE)</option>
+                                        <option value="fr-FR" <?php echo ($settings['language'] ?? '') === 'fr-FR' ? 'selected' : ''; ?>>Français (fr-FR)</option>
+                                        <option value="es-ES" <?php echo ($settings['language'] ?? '') === 'es-ES' ? 'selected' : ''; ?>>Español (es-ES)</option>
+                                        <option value="ru-RU" <?php echo ($settings['language'] ?? '') === 'ru-RU' ? 'selected' : ''; ?>>Русский (ru-RU)</option>
+                                        <option value="pt-BR" <?php echo ($settings['language'] ?? '') === 'pt-BR' ? 'selected' : ''; ?>>Português (pt-BR)</option>
+                                        <option value="ar-SA" <?php echo ($settings['language'] ?? '') === 'ar-SA' ? 'selected' : ''; ?>>العربية (ar-SA)</option>
+                                        <option value="th-TH" <?php echo ($settings['language'] ?? '') === 'th-TH' ? 'selected' : ''; ?>>ไทย (th-TH)</option>
+                                        <option value="vi-VN" <?php echo ($settings['language'] ?? '') === 'vi-VN' ? 'selected' : ''; ?>>Tiếng Việt (vi-VN)</option>
+                                        <option value="id-ID" <?php echo ($settings['language'] ?? '') === 'id-ID' ? 'selected' : ''; ?>>Bahasa Indonesia (id-ID)</option>
+                                        <option value="zh-CN" <?php echo ($settings['language'] ?? '') === 'zh-CN' ? 'selected' : ''; ?>>简体中文 (zh-CN)</option>
+                                        <option value="zh-TW" <?php echo ($settings['language'] ?? '') === 'zh-TW' ? 'selected' : ''; ?>>繁體中文 (zh-TW)</option>
                                     </select>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label fw-medium">Admin Language</label>
                                     <select name="settings[admin_language]" class="form-select bg-light border-0">
-                                        <option value="zh-CN" <?php echo ($settings['admin_language'] ?? '') === 'zh-CN' ? 'selected' : ''; ?>>简体中文</option>
-                                        <option value="en-US" <?php echo ($settings['admin_language'] ?? '') === 'en-US' ? 'selected' : ''; ?>>English</option>
-                                        <option value="zh-TW" <?php echo ($settings['admin_language'] ?? '') === 'zh-TW' ? 'selected' : ''; ?>>繁體中文</option>
-                                        <option value="ja-JP" <?php echo ($settings['admin_language'] ?? '') === 'ja-JP' ? 'selected' : ''; ?>>日本語</option>
-                                        <option value="ko-KR" <?php echo ($settings['admin_language'] ?? '') === 'ko-KR' ? 'selected' : ''; ?>>한국어</option>
+                                        <option value="zh-CN" <?php echo ($settings['admin_language'] ?? '') === 'zh-CN' ? 'selected' : ''; ?>>简体中文 (zh-CN)</option>
+                                        <option value="en-US" <?php echo ($settings['admin_language'] ?? '') === 'en-US' ? 'selected' : ''; ?>>English (en-US)</option>
+                                        <option value="ja-JP" <?php echo ($settings['admin_language'] ?? '') === 'ja-JP' ? 'selected' : ''; ?>>日本語 (ja-JP)</option>
+                                        <option value="ko-KR" <?php echo ($settings['admin_language'] ?? '') === 'ko-KR' ? 'selected' : ''; ?>>한국어 (ko-KR)</option>
+                                        <option value="de-DE" <?php echo ($settings['admin_language'] ?? '') === 'de-DE' ? 'selected' : ''; ?>>Deutsch (de-DE)</option>
+                                        <option value="fr-FR" <?php echo ($settings['admin_language'] ?? '') === 'fr-FR' ? 'selected' : ''; ?>>Français (fr-FR)</option>
+                                        <option value="es-ES" <?php echo ($settings['admin_language'] ?? '') === 'es-ES' ? 'selected' : ''; ?>>Español (es-ES)</option>
+                                        <option value="ru-RU" <?php echo ($settings['admin_language'] ?? '') === 'ru-RU' ? 'selected' : ''; ?>>Русский (ru-RU)</option>
+                                        <option value="pt-BR" <?php echo ($settings['admin_language'] ?? '') === 'pt-BR' ? 'selected' : ''; ?>>Português (pt-BR)</option>
+                                        <option value="ar-SA" <?php echo ($settings['admin_language'] ?? '') === 'ar-SA' ? 'selected' : ''; ?>>العربية (ar-SA)</option>
+                                        <option value="th-TH" <?php echo ($settings['admin_language'] ?? '') === 'th-TH' ? 'selected' : ''; ?>>ไทย (th-TH)</option>
+                                        <option value="vi-VN" <?php echo ($settings['admin_language'] ?? '') === 'vi-VN' ? 'selected' : ''; ?>>Tiếng Việt (vi-VN)</option>
+                                        <option value="id-ID" <?php echo ($settings['admin_language'] ?? '') === 'id-ID' ? 'selected' : ''; ?>>Bahasa Indonesia (id-ID)</option>
+                                        <option value="zh-TW" <?php echo ($settings['admin_language'] ?? '') === 'zh-TW' ? 'selected' : ''; ?>>繁體中文 (zh-TW)</option>
                                     </select>
                                 </div>
                                 <div class="col-12">

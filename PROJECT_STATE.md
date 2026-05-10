@@ -8,8 +8,9 @@ https://github.com/xAIcms/xaicms
 15 commits / MIT / Docker / 双语 README
 
 ### Language System (v1.1.1)
-- `language` — frontend/public site language (for SEO targeting)
-- `admin_language` — admin panel language (for operator convenience)
+- 14 languages sorted by cross-border market demand: en-US > ja-JP > ko-KR > de-DE > fr-FR > es-ES > ru-RU > pt-BR > ar-SA > th-TH > vi-VN > id-ID > zh-CN > zh-TW
+- `language` — frontend/public site language, default en-US
+- `admin_language` — admin panel language, default zh-CN, 14 options same as frontend
 - AI generation language is per-api-config, independent of site language
 - Both stored in: config.php + settings table
 - Settable at: install wizard Step 3 + admin settings Basic tab
