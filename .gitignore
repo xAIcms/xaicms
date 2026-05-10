@@ -28,3 +28,4 @@ db_data/
 # Tests
 coverage/
 .phpunit.result.cache
+public/index.php.bak

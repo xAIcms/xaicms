@@ -84,7 +84,7 @@ class Plugin
     public static function deactivate(string $slug): bool
     {
         $active = self::getActive();
-        $active = array_filter($active, fn($s) => $s !== $slug);
+        $active = array_filter($active, function($s) use ($slug) { return $s !== $slug; });
         Settings::set('active_plugins', json_encode(array_values($active)));
         return true;
     }

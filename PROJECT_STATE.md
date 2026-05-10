@@ -7,6 +7,12 @@ https://github.com/xAIcms/xaicms
 
 15 commits / MIT / Docker / 双语 README
 
+### Router (v1.1.1)
+- `src/Core/Router.php` — lightweight HTTP router, replaces 1600-line if/else chain
+- Supports: exact match, regex with params, group prefixes, nested groups, middleware, catch-all (/*)
+- PHP 7.3 compatible (polyfills for str_starts_with, str_ends_with, str_contains)
+- `public/index.php` refactored: 1621→~470 lines, same behavior, all routes organized by section
+
 ### Language System (v1.1.1)
 - 14 languages sorted by cross-border market demand: en-US > ja-JP > ko-KR > de-DE > fr-FR > es-ES > ru-RU > pt-BR > ar-SA > th-TH > vi-VN > id-ID > zh-CN > zh-TW
 - `language` — frontend/public site language, default en-US
@@ -24,6 +30,7 @@ https://github.com/xAIcms/xaicms
 | Template | src/Core/Template.php — scan, preview, switch |
 | Updater | src/Core/Updater.php — GitHub Release update |
 | Scheduler | src/Core/Scheduler.php — pseudo-cron, BT Panel-style |
+| Router | src/Core/Router.php — lightweight HTTP router |
 
 ### Plugins (6 built-in)
 | Plugin | What it does |
@@ -45,11 +52,12 @@ https://github.com/xAIcms/xaicms
 - Docker Compose one-line deploy
 
 ### Coming (V2)
-- [ ] xai-schemes plugin extraction
+- [ ] xai-schemes plugin extraction (on hold — too coupled with AI engine)
 - [ ] JSON REST API
 - [ ] Plugin marketplace
 - [ ] Template marketplace
 - [ ] ProductHunt launch
+- [ ] SEO: hreflang, Breadcrumb schema, robots.txt route
 
 ### Frequency Types
 | Mode | Example |
