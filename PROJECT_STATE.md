@@ -20,6 +20,11 @@ https://github.com/xAIcms/xaicms
 - `__f()` for sprintf-style — `__f('Created %d articles', 5)`
 - Auto-loads based on `admin_language` setting
 - `layout.php` sidebar fully translated (all menu items, quick links)
+
+### SEO Enhancements (v1.1.1)
+- `hreflang` tags — x-default + page language, prevents duplicate content penalty
+- `BreadcrumbList` Schema.org JSON-LD — search result breadcrumbs from category chain
+- `/robots.txt` route — serves from settings, auto-generates default with Sitemap link
 - 14 languages sorted by cross-border market demand: en-US > ja-JP > ko-KR > de-DE > fr-FR > es-ES > ru-RU > pt-BR > ar-SA > th-TH > vi-VN > id-ID > zh-CN > zh-TW
 - `language` — frontend/public site language, default en-US
 - `admin_language` — admin panel language, default zh-CN, 14 options same as frontend
@@ -63,7 +68,6 @@ https://github.com/xAIcms/xaicms
 - [ ] Plugin marketplace
 - [ ] Template marketplace
 - [ ] ProductHunt launch
-- [ ] SEO: hreflang, Breadcrumb schema, robots.txt route
 
 ### Frequency Types
 | Mode | Example |

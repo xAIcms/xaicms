@@ -48,6 +48,14 @@ if (strpos($ogImage, 'http') !== 0) {
 <!-- Canonical -->
 <link rel="canonical" href="<?php echo htmlspecialchars($currentUrl ?? ($adaptiveSiteUrl . $_SERVER['REQUEST_URI'])); ?>">
 
+<!-- hreflang — Multi-language SEO -->
+<?php
+$pageLang = $article['language'] ?? $settings['language'] ?? 'en-US';
+$pageUrl = $currentUrl ?? ($adaptiveSiteUrl . $_SERVER['REQUEST_URI']);
+?>
+<link rel="alternate" hreflang="x-default" href="<?php echo htmlspecialchars($pageUrl); ?>">
+<link rel="alternate" hreflang="<?php echo htmlspecialchars($pageLang); ?>" href="<?php echo htmlspecialchars($pageUrl); ?>">
+
 <!-- GEO Tags -->
 <?php if (!empty($settings['geoRegion'])): ?>
 <meta name="geo.region" content="<?php echo htmlspecialchars($settings['geoRegion']); ?>">
@@ -104,3 +112,50 @@ if (isset($article) && is_array($article)) {
 <script type="application/ld+json">
 <?php echo json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT); ?>
 </script>
+
+<?php
+// BreadcrumbList Schema
+$breadcrumbItems = [
+    ['@type' => 'ListItem', 'position' => 1, 'name' => $settings['siteName'] ?? 'xAI CMS', 'item' => $adaptiveSiteUrl]
+];
+
+if (isset($article) && is_array($article)) {
+    // Article page: build breadcrumb from parent categories
+    if (!empty($parentCategories)) {
+        $pos = 2;
+        foreach ($parentCategories as $pcat) {
+            $breadcrumbItems[] = [
+                '@type' => 'ListItem',
+                'position' => $pos++,
+                'name' => $pcat['name'],
+                'item' => $adaptiveSiteUrl . '/category/' . urlencode($pcat['slug'])
+            ];
+        }
+    }
+    if (!empty($category) && is_array($category)) {
+        $breadcrumbItems[] = [
+            '@type' => 'ListItem',
+            'position' => count($breadcrumbItems) + 1,
+            'name' => $category['name'],
+            'item' => $adaptiveSiteUrl . '/category/' . urlencode($category['slug'])
+        ];
+    }
+} elseif (isset($category) && is_array($category)) {
+    // Category page
+    $breadcrumbItems[] = [
+        '@type' => 'ListItem',
+        'position' => 2,
+        'name' => $category['name'],
+        'item' => $adaptiveSiteUrl . '/category/' . urlencode($category['slug'])
+    ];
+}
+
+if (count($breadcrumbItems) > 1): ?>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": <?php echo json_encode($breadcrumbItems, JSON_UNESCAPED_SLASHES); ?>
+}
+</script>
+<?php endif; ?>

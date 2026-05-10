@@ -136,6 +136,20 @@ $router->get('/sitemap.xml', function() {
     exit;
 });
 
+$router->get('/robots.txt', function() use ($settings) {
+    header('Content-Type: text/plain; charset=utf-8');
+    if (!empty($settings['robotsTxt'])) {
+        echo $settings['robotsTxt'];
+    } else {
+        $siteUrl = $settings['siteUrl'] ?? 'http://localhost';
+        $siteUrl = rtrim($siteUrl, '/');
+        echo "User-agent: *\n";
+        echo "Allow: /\n";
+        echo "Sitemap: $siteUrl/sitemap.xml\n";
+    }
+    exit;
+});
+
 // ── Auth Routes ──
 $router->any('/login', function() use ($settings) {
     UserController::login();
