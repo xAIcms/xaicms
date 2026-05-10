@@ -77,7 +77,7 @@ class UserController {
                     $userId = User::create($data);
                     
                     if ($userId) {
-                        // Redirect to login page with success message
+                        do_action('user_registered', $userId, $data);
                         header('Location: /login?registered=1');
                         exit;
                     } else {

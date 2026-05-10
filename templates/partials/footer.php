@@ -19,5 +19,7 @@
 </script>
 <?php endif; ?>
 
+<?php do_action('before_output'); ?>
+
 </body>
 </html>

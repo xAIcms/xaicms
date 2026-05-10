@@ -190,9 +190,11 @@
                             系统设置
                         </a>
                     </li>
-                </ul>
-                
-                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-2 text-muted text-uppercase small fw-bold">
+            </ul>
+
+            <?php do_action('admin_menu'); ?>
+
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-2 text-muted text-uppercase small fw-bold">
                     <span>快捷入口</span>
                 </h6>
                 <ul class="nav flex-column mb-2">
