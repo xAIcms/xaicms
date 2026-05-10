@@ -156,24 +156,15 @@ if (strpos($uri, '/user') === 0) {
         exit;
     }
     
-    // Recharge
-    if ($uri === '/user/recharge') {
-        require_once __DIR__ . '/../src/Controllers/UserRechargeController.php';
-        UserRechargeController::index();
-        exit;
-    }
-    if ($uri === '/user/recharge/create') {
-        require_once __DIR__ . '/../src/Controllers/UserRechargeController.php';
-        UserRechargeController::create();
+    // AI Schemes
+    if ($uri === '/user/ai-schemes') {
+        require_once __DIR__ . '/../src/Controllers/UserAiSchemeController.php';
+        UserAiSchemeController::index();
         exit;
     }
     if ($uri === '/user/ai-schemes/create') {
         require_once __DIR__ . '/../src/Controllers/UserAiSchemeController.php';
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            UserAiSchemeController::store();
-        } else {
-            UserAiSchemeController::create();
-        }
         exit;
     }
 
@@ -203,49 +194,7 @@ if (strpos($uri, '/user') === 0) {
 // Admin Routes
     if (isset($parts[0]) && $parts[0] === 'admin') {
         
-        // Point Packages
-        if ($uri === '/admin/point-packages') {
-            require_once __DIR__ . '/../src/Controllers/AdminPointPackageController.php';
-            AdminPointPackageController::index();
-            exit;
-        }
-        if ($uri === '/admin/point-packages/create') {
-            require_once __DIR__ . '/../src/Controllers/AdminPointPackageController.php';
-            AdminPointPackageController::create();
-            exit;
-        }
-        if ($uri === '/admin/point-packages/edit') {
-            require_once __DIR__ . '/../src/Controllers/AdminPointPackageController.php';
-            AdminPointPackageController::edit($_GET['id'] ?? 0);
-            exit;
-        }
-        if ($uri === '/admin/point-packages/delete') {
-            require_once __DIR__ . '/../src/Controllers/AdminPointPackageController.php';
-            AdminPointPackageController::delete($_GET['id'] ?? 0);
-            exit;
-        }
-
-        // Recharge Orders
-        if ($uri === '/admin/recharge-orders') {
-            require_once __DIR__ . '/../src/Controllers/AdminRechargeController.php';
-            AdminRechargeController::index();
-            exit;
-        }
-        if ($uri === '/admin/recharge-orders/approve') {
-            require_once __DIR__ . '/../src/Controllers/AdminRechargeController.php';
-            AdminRechargeController::approve();
-            exit;
-        }
-        if ($uri === '/admin/recharge-orders/reject') {
-            require_once __DIR__ . '/../src/Controllers/AdminRechargeController.php';
-            AdminRechargeController::reject();
-            exit;
-        }
-        if ($uri === '/admin/recharge-orders/update-remark') {
-            require_once __DIR__ . '/../src/Controllers/AdminRechargeController.php';
-            AdminRechargeController::updateRemark();
-            exit;
-        }    // Check Login
+        // Check Login
     $isLoggedIn = isset($_SESSION['user_id']);
 
     // Login Page

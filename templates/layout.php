@@ -89,32 +89,11 @@
                         </div>
                     </li>
 
-                    <!-- User & Finance -->
-                    <?php 
-                    $userActive = (
-                        strpos($uri, '/admin/users') !== false || 
-                        strpos($uri, '/admin/point-packages') !== false || 
-                        strpos($uri, '/admin/recharge-orders') !== false
-                    );
-                    ?>
+                    <!-- Users -->
                     <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center justify-content-between <?php echo $userActive ? '' : 'collapsed'; ?>" data-bs-toggle="collapse" href="#menu-user" role="button" aria-expanded="<?php echo $userActive ? 'true' : 'false'; ?>">
-                            <span><i class="bi bi-people me-2"></i> 用户与财务</span>
-                            <i class="bi bi-chevron-down small transition-transform"></i>
+                        <a class="nav-link <?php echo (strpos($uri, '/admin/users') !== false) ? 'active' : ''; ?>" href="/admin/users">
+                            <i class="bi bi-people me-2"></i> 用户管理
                         </a>
-                        <div class="collapse <?php echo $userActive ? 'show' : ''; ?>" id="menu-user">
-                            <ul class="nav flex-column ms-3 border-start ps-2 my-1">
-                                <li class="nav-item">
-                                    <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/users') !== false) ? 'active' : ''; ?>" href="/admin/users">用户管理</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/point-packages') !== false) ? 'active' : ''; ?>" href="/admin/point-packages">积分套餐</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/recharge-orders') !== false) ? 'active' : ''; ?>" href="/admin/recharge-orders">充值审核</a>
-                                </li>
-                            </ul>
-                        </div>
                     </li>
 
                     <!-- API & AI -->
