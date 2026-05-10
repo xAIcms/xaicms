@@ -15,8 +15,8 @@ services:
       - AI_PROVIDER=deepseek
       - AI_API_KEY=
       - AI_BASE_URL=https://api.deepseek.com/v1
-      - AI_MODEL=deepseek-chat
-      - AI_FREE_QUOTA=10
+      - AI_MODEL=deepseek-v4-flash
+      - AI_PRO_MODEL=deepseek-v4-pro
     volumes:
       - ./public/uploads:/var/www/html/public/uploads
     depends_on:

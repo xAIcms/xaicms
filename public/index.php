@@ -453,6 +453,12 @@ if (strpos($uri, '/user') === 0) {
         exit;
     }
 
+    // AI Settings
+    if ($parts[1] === 'ai-settings') {
+        require __DIR__ . '/../templates/admin/ai_settings.php';
+        exit;
+    }
+
     // System Update
     if ($parts[1] === 'update') {
         require __DIR__ . '/../templates/admin/update.php';

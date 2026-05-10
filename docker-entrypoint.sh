@@ -28,7 +28,6 @@ return [
         'default_base_url' => '${AI_BASE_URL:-https://api.deepseek.com/v1}',
         'default_model' => '${AI_MODEL:-deepseek-v4-flash}',
         'pro_model' => '${AI_PRO_MODEL:-deepseek-v4-pro}',
-        'free_quota' => '${AI_FREE_QUOTA:-10}',
     ],
 ];
 EOF

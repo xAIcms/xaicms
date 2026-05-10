@@ -121,7 +121,8 @@
                     <?php 
                     $apiActive = (
                         strpos($uri, '/admin/api') !== false || 
-                        strpos($uri, '/admin/ai-models') !== false
+                        strpos($uri, '/admin/ai-models') !== false ||
+                        strpos($uri, '/admin/ai-settings') !== false
                     );
                     ?>
                     <li class="nav-item">
@@ -136,6 +137,9 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/ai-models') !== false) ? 'active' : ''; ?>" href="/admin/ai-models">AI 模型管理</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/ai-settings') !== false) ? 'active' : ''; ?>" href="/admin/ai-settings">⚙ AI 配置</a>
                                 </li>
                             </ul>
                         </div>
