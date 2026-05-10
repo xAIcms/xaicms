@@ -27,6 +27,10 @@ function apply_filters(string $tag, $value, ...$args) {
 // Load active plugins (must be before any hook execution)
 Plugin::loadActive();
 
+// Run scheduled tasks (auto-publish, etc.) — runs on every page load, very lightweight
+require_once __DIR__ . '/../src/Core/Scheduler.php';
+Scheduler::tick();
+
 // 简单的路由分发器
 require_once __DIR__ . '/../src/Models/Settings.php';
 require_once __DIR__ . '/../src/Models/Article.php';
@@ -386,6 +390,13 @@ if (strpos($uri, '/user') === 0) {
         require __DIR__ . '/../templates/admin/ai_settings.php';
         exit;
     }
+
+    // Task Scheduler
+    if ($parts[1] === 'schedules') {
+        require __DIR__ . '/../templates/admin/schedules.php';
+        exit;
+    }
+
 
     // System Update
     if ($parts[1] === 'update') {

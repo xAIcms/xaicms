@@ -148,6 +148,7 @@
                     <!-- Operations -->
                     <?php 
                     $opsActive = (
+                        strpos($uri, '/admin/schedules') !== false ||
                         strpos($uri, '/admin/plugins') !== false
                     );
                     ?>
@@ -158,6 +159,9 @@
                         </a>
                         <div class="collapse <?php echo $opsActive ? 'show' : ''; ?>" id="menu-ops">
                             <ul class="nav flex-column ms-3 border-start ps-2 my-1">
+                                <li class="nav-item">
+                                    <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/schedules') !== false) ? 'active' : ''; ?>" href="/admin/schedules">⏰ 定时任务</a>
+                                </li>
                                 <li class="nav-item">
                                     <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/templates') !== false) ? 'active' : ''; ?>" href="/admin/templates">🎨 模板管理</a>
                                 </li>
