@@ -133,6 +133,16 @@ ob_start();
                                     <label class="form-label fw-medium">每页文章数</label>
                                     <input type="number" name="settings[articlesPerPage]" class="form-control bg-light border-0" value="<?php echo htmlspecialchars($settings['articlesPerPage'] ?? '10'); ?>">
                                 </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-medium">Site Language</label>
+                                    <select name="settings[language]" class="form-select bg-light border-0">
+                                        <option value="zh-CN" <?php echo ($settings['language'] ?? '') === 'zh-CN' ? 'selected' : ''; ?>>简体中文</option>
+                                        <option value="en-US" <?php echo ($settings['language'] ?? '') === 'en-US' ? 'selected' : ''; ?>>English</option>
+                                        <option value="zh-TW" <?php echo ($settings['language'] ?? '') === 'zh-TW' ? 'selected' : ''; ?>>繁體中文</option>
+                                        <option value="ja-JP" <?php echo ($settings['language'] ?? '') === 'ja-JP' ? 'selected' : ''; ?>>日本語</option>
+                                        <option value="ko-KR" <?php echo ($settings['language'] ?? '') === 'ko-KR' ? 'selected' : ''; ?>>한국어</option>
+                                    </select>
+                                </div>
                                 <div class="col-12">
                                     <label class="form-label fw-medium">页脚版权信息</label>
                                     <input type="text" name="settings[footerCopyright]" class="form-control bg-light border-0" value="<?php echo htmlspecialchars($settings['footerCopyright'] ?? ''); ?>">
