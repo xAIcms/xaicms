@@ -114,15 +114,16 @@ class Scheduler
         $language = $config['language'] ?? 'zh-CN';
         $region = $config['region'] ?? 'CN';
         $topic = $config['topic'] ?? '';
-        $promptTemplate = $config['prompt'] ?? '';
+        $keywords = $config['keywords'] ?? '';
+        $tone = $config['tone'] ?? 'professional';
+        $wordCount = $config['word_count'] ?? 800;
+        $authorName = $config['author_name'] ?? 'AI Editor';
+        $customPrompt = $config['prompt'] ?? '';
 
-        if (empty($topic) && empty($promptTemplate)) return;
+        if (empty($topic)) return;
 
         // Find active AI model
-        $model = null;
-        if ($modelId) {
-            $model = AiModel::find($modelId);
-        }
+        $model = $modelId ? AiModel::find($modelId) : null;
         if (!$model) {
             $models = AiModel::getActive();
             if (!empty($models)) $model = $models[0];
@@ -130,23 +131,39 @@ class Scheduler
         if (!$model) return;
 
         // Build prompt
-        $prompt = $promptTemplate ?: "Write a comprehensive article about: $topic. Include an introduction, key points, and conclusion. Use a professional tone. Output in $language.";
-        if ($topic) {
-            $prompt = str_replace('{topic}', $topic, $prompt);
-        }
+        $toneGuide = match ($tone) {
+            'casual' => 'Use a friendly, conversational style.',
+            'technical' => 'Write with technical depth and precision. Include technical terms and explanations.',
+            'journalistic' => 'Write in a news/journalistic style. Be factual and objective.',
+            'persuasive' => 'Write persuasively. Make compelling arguments.',
+            'educational' => 'Write as a tutorial or educational guide. Be clear and instructional.',
+            default => 'Write in a professional tone.',
+        };
+
+        $prompt = $customPrompt ?: "Write a {$wordCount}-word article in {$language}.\n\nTopic: {$topic}\nKeywords to include: {$keywords}\nTone: {$tone}\n{$toneGuide}\n\nStructure: Title, introduction, key points with subheadings, conclusion.";
+
+        // Replace placeholders
+        $prompt = str_replace(
+            ['{topic}', '{keywords}', '{tone}', '{word_count}'],
+            [$topic, $keywords, $tone, $wordCount],
+            $prompt
+        );
 
         // Call AI
         $content = self::callAI($model, $prompt);
         if (!$content) return;
 
-        // Extract title from first line or use topic
+        // Extract title from first line
         $lines = explode("\n", trim($content));
         $title = trim($lines[0], "# \t\n\r\0\x0B");
-        if (mb_strlen($title) > 100) {
-            $title = mb_substr($title, 0, 100);
+        if (mb_strlen($title) > 120) {
+            $title = mb_substr($title, 0, 120);
+        }
+        // If title looks like a heading marker, use topic
+        if (empty($title) || preg_match('/^[#\-\*\d\.]+$/', $title)) {
+            $title = $topic;
         }
 
-        // Create article
         $slug = \SlugGenerator::generate($title);
 
         Article::create([
@@ -214,7 +231,41 @@ class Scheduler
         self::ensureTable();
         $pdo = Database::getInstance()->getConnection();
 
-        $nextRun = date('Y-m-d H:i:s', time() + $intervalSeconds);
+        // Calculate next run time
+        $now = time();
+        $runAtTime = $config['run_at_time'] ?? null;
+        $runOnDays = $config['run_on_days'] ?? [];
+
+        if ($runAtTime) {
+            // Calculate next run at the specified time
+            $todayAt = strtotime(date('Y-m-d') . ' ' . $runAtTime . ':00');
+            if ($todayAt <= $now) {
+                $todayAt = strtotime('+1 day', strtotime(date('Y-m-d') . ' ' . $runAtTime . ':00'));
+            }
+            $nextRunTs = $todayAt;
+
+            // For weekly: find next matching day
+            if (!empty($runOnDays)) {
+                $nextRunTs = null;
+                for ($i = 0; $i < 7; $i++) {
+                    $checkDay = strtotime("+$i day", strtotime(date('Y-m-d') . ' ' . $runAtTime . ':00'));
+                    $dayOfWeek = (int)date('N', $checkDay) - 1; // 0=Mon, 6=Sun
+                    if (in_array((string)$dayOfWeek, $runOnDays) || in_array((int)$dayOfWeek, $runOnDays)) {
+                        if ($checkDay > $now) {
+                            $nextRunTs = $checkDay;
+                            break;
+                        }
+                    }
+                }
+                if (!$nextRunTs) {
+                    $nextRunTs = $todayAt + 604800; // Fallback: next week
+                }
+            }
+        } else {
+            $nextRunTs = $now + $intervalSeconds;
+        }
+
+        $nextRun = date('Y-m-d H:i:s', $nextRunTs);
 
         $pdo->prepare(
             "INSERT INTO schedules (task_name, description, next_run_at, interval_seconds, config) VALUES (?, ?, ?, ?, ?)
@@ -224,7 +275,7 @@ class Scheduler
             $intervalSeconds, json_encode($config), $nextRun
         ]);
 
-        return (int) $pdo->lastInsertId();
+        return (int) $pdo->lastInsertRowId();
     }
 
     /**
