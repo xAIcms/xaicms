@@ -70,12 +70,6 @@ $uri = urldecode($uri); // 解码 URL，防止中文路径无法匹配
 
 require_once __DIR__ . '/../src/Controllers/UserController.php';
 
-// API Routes
-if ($uri === '/api/send-sms') {
-    require_once __DIR__ . '/api/send_sms.php';
-    exit;
-}
-
 // RSS Feed
 if ($uri === '/rss.xml') {
     require_once __DIR__ . '/../src/Utils/RssGenerator.php';
@@ -374,72 +368,6 @@ if (strpos($uri, '/user') === 0) {
         }
     }
 
-
-    // Announcement Management
-    if ($parts[1] === 'announcements') {
-        require_once __DIR__ . '/../src/Controllers/AdminAnnouncementController.php';
-        
-        $action = $parts[2] ?? 'index';
-        
-        if ($action === 'index' || $action === '') {
-            AdminAnnouncementController::index();
-            exit;
-        }
-        
-        if ($action === 'create') {
-            AdminAnnouncementController::create();
-            exit;
-        }
-        
-        if ($action === 'edit') {
-            $id = $parts[3] ?? null; // /admin/announcements/edit/123
-            if ($id) {
-                AdminAnnouncementController::edit($id);
-                exit;
-            }
-        }
-        
-        if ($action === 'delete') {
-            $id = $parts[3] ?? null; // /admin/announcements/delete/123
-            if ($id) {
-                AdminAnnouncementController::delete($id);
-                exit;
-            }
-        }
-    }
-
-    // System Update Management
-    if ($parts[1] === 'system-updates') {
-        require_once __DIR__ . '/../src/Controllers/AdminSystemUpdateController.php';
-        
-        $action = $parts[2] ?? 'index';
-        
-        if ($action === 'index' || $action === '') {
-            AdminSystemUpdateController::index();
-            exit;
-        }
-        
-        if ($action === 'create') {
-            AdminSystemUpdateController::create();
-            exit;
-        }
-        
-        if ($action === 'edit') {
-            $id = $parts[3] ?? null;
-            if ($id) {
-                AdminSystemUpdateController::edit($id);
-                exit;
-            }
-        }
-        
-        if ($action === 'delete') {
-            $id = $parts[3] ?? null;
-            if ($id) {
-                AdminSystemUpdateController::delete($id);
-                exit;
-            }
-        }
-    }
 
     // Plugin Management
     if ($parts[1] === 'plugins') {
@@ -1043,21 +971,6 @@ if (strpos($uri, '/user') === 0) {
     
 
     // Spider Logs
-    if ($parts[1] === 'spider-logs') {
-        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-        $limit = 50;
-        $offset = ($page - 1) * $limit;
-        
-        $logs = SpiderLog::getAll($limit, $offset);
-        $total = SpiderLog::countAll();
-        $totalPages = ceil($total / $limit);
-        
-        $stats = SpiderLog::getStats(7); // Get stats for last 7 days
-
-        require __DIR__ . '/../templates/admin/spider_logs.php';
-        exit;
-    }
-
     // Media Library
     if ($parts[1] === 'media') {
         $action = $parts[2] ?? 'list';

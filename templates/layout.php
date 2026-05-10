@@ -148,10 +148,7 @@
                     <!-- Operations -->
                     <?php 
                     $opsActive = (
-                        strpos($uri, '/admin/plugins') !== false ||
-                        strpos($uri, '/admin/announcements') !== false || 
-                        strpos($uri, '/admin/system-updates') !== false || 
-                        strpos($uri, '/admin/spider-logs') !== false
+                        strpos($uri, '/admin/plugins') !== false
                     );
                     ?>
                     <li class="nav-item">
@@ -162,22 +159,13 @@
                         <div class="collapse <?php echo $opsActive ? 'show' : ''; ?>" id="menu-ops">
                             <ul class="nav flex-column ms-3 border-start ps-2 my-1">
                                 <li class="nav-item">
-                                    <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/announcements') !== false) ? 'active' : ''; ?>" href="/admin/announcements">平台公告</a>
-                                </li>
-                                <li class="nav-item">
                                     <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/templates') !== false) ? 'active' : ''; ?>" href="/admin/templates">🎨 模板管理</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/update') !== false) ? 'active' : ''; ?>" href="/admin/update">🔄 系统更新</a>
+                                    <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/update') !== false) ? 'active' : ''; ?>" href="/admin/update">🔄 在线更新</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/plugins') !== false) ? 'active' : ''; ?>" href="/admin/plugins">🔌 插件管理</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/system-updates') !== false) ? 'active' : ''; ?>" href="/admin/system-updates">系统更新</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/spider-logs') !== false) ? 'active' : ''; ?>" href="/admin/spider-logs">爬虫日志</a>
                                 </li>
                             </ul>
                         </div>
