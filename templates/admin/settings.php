@@ -102,6 +102,13 @@ ob_start();
                                 <div class="small opacity-50">Favicon、CSS、JS注入</div>
                             </div>
                         </button>
+                        <button class="nav-link text-start py-3 px-3 d-flex align-items-center" id="pages-tab" data-bs-toggle="pill" data-bs-target="#pages" type="button" role="tab">
+                            <i class="bi bi-file-earmark-text me-2 fs-5"></i>
+                            <div>
+                                <div class="fw-medium">静态页面</div>
+                                <div class="small opacity-50">关于我们、隐私政策、服务条款</div>
+                            </div>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -486,6 +493,68 @@ ob_start();
                                     <div class="position-absolute top-0 end-0 m-2 badge bg-warning opacity-50 text-dark">JS</div>
                                 </div>
                                 <div class="form-text">这些 JS 将被注入到页面底部 <code>&lt;/body&gt;</code> 之前。</div>
+                            </div>
+                        </div>
+
+                        <!-- 静态页面 -->
+                        <div class="tab-pane fade" id="pages" role="tabpanel">
+                            <h5 class="card-title fw-bold mb-4 pb-2 border-bottom">静态页面内容</h5>
+                            <p class="text-muted mb-4">编辑关于我们、隐私政策、服务条款等页面的内容。留空则显示默认文本。</p>
+
+                            <h6 class="fw-bold text-indigo-600 mb-3"><i class="bi bi-info-circle me-2"></i>关于我们</h6>
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-medium">页面标题</label>
+                                    <input type="text" name="settings[about_hero_title]" class="form-control bg-light border-0" value="<?php echo htmlspecialchars($settings['about_hero_title'] ?? ''); ?>" placeholder="关于我们">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-medium">副标题</label>
+                                    <input type="text" name="settings[about_hero_desc]" class="form-control bg-light border-0" value="<?php echo htmlspecialchars($settings['about_hero_desc'] ?? ''); ?>" placeholder="简短描述">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label fw-medium">页面内容 (HTML)</label>
+                                    <textarea name="settings[about_content]" class="form-control bg-light border-0" rows="10"><?php echo htmlspecialchars($settings['about_content'] ?? ''); ?></textarea>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-medium">联系邮箱</label>
+                                    <input type="email" name="settings[about_contact_email]" class="form-control bg-light border-0" value="<?php echo htmlspecialchars($settings['about_contact_email'] ?? ''); ?>">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-medium">联系电话</label>
+                                    <input type="text" name="settings[about_contact_phone]" class="form-control bg-light border-0" value="<?php echo htmlspecialchars($settings['about_contact_phone'] ?? ''); ?>">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-medium">公司地址</label>
+                                    <input type="text" name="settings[about_contact_address]" class="form-control bg-light border-0" value="<?php echo htmlspecialchars($settings['about_contact_address'] ?? ''); ?>">
+                                </div>
+                            </div>
+
+                            <hr class="my-4">
+
+                            <h6 class="fw-bold text-indigo-600 mb-3"><i class="bi bi-shield-check me-2"></i>隐私政策</h6>
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-medium">页面标题</label>
+                                    <input type="text" name="settings[privacy_title]" class="form-control bg-light border-0" value="<?php echo htmlspecialchars($settings['privacy_title'] ?? ''); ?>" placeholder="隐私政策">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label fw-medium">页面内容 (HTML)</label>
+                                    <textarea name="settings[privacy_content]" class="form-control bg-light border-0" rows="10"><?php echo htmlspecialchars($settings['privacy_content'] ?? ''); ?></textarea>
+                                </div>
+                            </div>
+
+                            <hr class="my-4">
+
+                            <h6 class="fw-bold text-indigo-600 mb-3"><i class="bi bi-file-text me-2"></i>服务条款</h6>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-medium">页面标题</label>
+                                    <input type="text" name="settings[terms_title]" class="form-control bg-light border-0" value="<?php echo htmlspecialchars($settings['terms_title'] ?? ''); ?>" placeholder="服务条款">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label fw-medium">页面内容 (HTML)</label>
+                                    <textarea name="settings[terms_content]" class="form-control bg-light border-0" rows="10"><?php echo htmlspecialchars($settings['terms_content'] ?? ''); ?></textarea>
+                                </div>
                             </div>
                         </div>
                     </div>

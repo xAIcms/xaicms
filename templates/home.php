@@ -9,50 +9,53 @@ include __DIR__ . '/partials/header.php';
 
 <?php if ($page === 1): ?>
     <!-- Hero Section -->
-    <section class="relative h-[600px] lg:h-[800px] flex items-center justify-center text-white overflow-hidden">
-        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1920');"></div>
-        <div class="absolute inset-0 bg-black/50"></div>
+    <section class="relative h-[400px] lg:h-[500px] flex items-center justify-center text-white overflow-hidden bg-gradient-to-br from-indigo-900 via-indigo-800 to-purple-900">
         <div class="relative z-10 max-w-7xl mx-auto px-6 text-center">
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight leading-tight">
-                连接全球 <br/> <span class="text-indigo-400">创造无限价值</span>
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 tracking-tight leading-tight">
+                <?php echo htmlspecialchars($settings['siteName'] ?? 'xAI CMS'); ?>
             </h1>
-            <p class="text-xl md:text-2xl text-gray-200 mb-10 max-w-3xl mx-auto font-light">
-                我们致力于为企业提供卓越的全球化数字解决方案，驱动业务持续增长。
+            <p class="text-xl md:text-2xl text-indigo-200 mb-10 max-w-3xl mx-auto font-light">
+                <?php echo htmlspecialchars($settings['siteDescription'] ?? ''); ?>
             </p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="/contact" class="px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full font-semibold text-lg transition-all min-w-[160px] no-underline">
-                    联系我们
+                <a href="/news" class="px-8 py-4 bg-white text-indigo-900 rounded-full font-semibold text-lg transition-all hover:bg-indigo-50 no-underline">
+                    <?php echo __('Browse Articles', '浏览文章'); ?>
                 </a>
-                <a href="/about" class="px-8 py-4 bg-transparent border border-white hover:bg-white hover:text-gray-900 text-white rounded-full font-semibold text-lg transition-all min-w-[160px] no-underline">
-                    了解更多
+                <a href="/about" class="px-8 py-4 bg-transparent border border-indigo-300 text-white rounded-full font-semibold text-lg transition-all hover:bg-white/10 no-underline">
+                    <?php echo __('About Us', '关于我们'); ?>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="py-16 bg-white border-b border-gray-100">
+    <!-- Features Strip -->
+    <section class="py-12 bg-white border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                 <div>
-                    <div class="text-4xl font-bold text-indigo-600 mb-2">500+</div>
-                    <div class="text-gray-500 text-sm uppercase tracking-wider">服务客户</div>
+                    <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+                        <i class="bi bi-globe2 text-indigo-600 text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-1"><?php echo __('Multi-language', '多语言内容'); ?></h3>
+                    <p class="text-sm text-gray-500"><?php echo __('Create content in 14 languages for global SEO.', '14种语言创建内容，覆盖全球SEO。'); ?></p>
                 </div>
                 <div>
-                    <div class="text-4xl font-bold text-indigo-600 mb-2">50+</div>
-                    <div class="text-gray-500 text-sm uppercase tracking-wider">覆盖国家</div>
+                    <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+                        <i class="bi bi-cpu text-indigo-600 text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-1"><?php echo __('AI Powered', 'AI 驱动'); ?></h3>
+                    <p class="text-sm text-gray-500"><?php echo __('Automated content generation with multiple AI models.', '多模型AI自动生成高质量内容。'); ?></p>
                 </div>
                 <div>
-                    <div class="text-4xl font-bold text-indigo-600 mb-2">10M+</div>
-                    <div class="text-gray-500 text-sm uppercase tracking-wider">每日请求</div>
-                </div>
-                <div>
-                    <div class="text-4xl font-bold text-indigo-600 mb-2">99.9%</div>
-                    <div class="text-gray-500 text-sm uppercase tracking-wider">服务可用性</div>
+                    <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+                        <i class="bi bi-graph-up-arrow text-indigo-600 text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-1"><?php echo __('SEO Optimized', 'SEO 优化'); ?></h3>
+                    <p class="text-sm text-gray-500"><?php echo __('Built-in Schema.org, sitemap, hreflang and more.', '内置结构化数据、站点地图、多语言标签。'); ?></p>
                 </div>
             </div>
         </div>
-    </section>
+    </section><?php endif; ?>
 
     <!-- About Section -->
     <section class="py-24 bg-white">
@@ -112,11 +115,10 @@ include __DIR__ . '/partials/header.php';
                     <p class="text-gray-600 leading-relaxed">
                         全链路数据监控与分析，提供深度的 SEO 洞察和业务报表，让每一次决策都基于真实数据。
                     </p>
-                </div>
             </div>
         </div>
     </section>
-<?php endif; ?>
+
 
 <!-- Latest News / Articles Section -->
 <section class="py-24 bg-white" id="news">

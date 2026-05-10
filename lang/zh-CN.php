@@ -68,4 +68,43 @@ return [
     // ── Quick Links ──
     'Quick Links' => '快捷入口',
     'View Site' => '查看站点',
+
+    // ── 前台导航 ──
+    'Home' => '首页',
+    'About' => '关于我们',
+    'About Us' => '关于我们',
+    'News' => '新闻动态',
+    'Login' => '登录',
+    'Register' => '注册',
+    'Logged in' => '已登录',
+    'User Center' => '用户中心',
+    'Profile' => '个人资料',
+    'Account Security' => '账户安全',
+    'Account' => '账户',
+    'Language' => '语言',
+    'Browse Articles' => '浏览文章',
+
+    // ── 前台 Footer ──
+    'Products' => '产品',
+    'Support' => '支持',
+    'Pricing' => '价格方案',
+    'FAQ' => '常见问题',
+    'Privacy Policy' => '隐私政策',
+    'Terms of Service' => '服务条款',
+    'Sitemap' => '网站地图',
+    'RSS Feed' => 'RSS 订阅',
+
+    // ── 联系 ──
+    'Contact' => '联系方式',
+    'Email' => '邮箱',
+    'Phone' => '电话',
+    'Address' => '地址',
+
+    // ── 首页特性 ──
+    'Multi-language' => '多语言内容',
+    'AI Powered' => 'AI 驱动',
+    'SEO Optimized' => 'SEO 优化',
+    'Create content in 14 languages for global SEO.' => '14种语言创建内容，覆盖全球SEO。',
+    'Automated content generation with multiple AI models.' => '多模型AI自动生成高质量内容。',
+    'Built-in Schema.org, sitemap, hreflang and more.' => '内置结构化数据、站点地图、多语言标签。',
 ];

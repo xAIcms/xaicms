@@ -57,21 +57,21 @@
 
             <!-- Product Column -->
             <div class="col-span-1">
-                <h4 class="text-gray-900 font-bold mb-6">产品</h4>
+                <h4 class="text-gray-900 font-bold mb-6"><?php echo __('Products', '产品'); ?></h4>
                 <ul class="space-y-4">
-                    <li><a href="/" class="text-gray-600 hover:text-indigo-600 transition-colors text-sm">首页</a></li>
-                    <li><a href="/news" class="text-gray-600 hover:text-indigo-600 transition-colors text-sm">新闻动态</a></li>
-                    <li><a href="/#pricing" class="text-gray-600 hover:text-indigo-600 transition-colors text-sm">价格方案</a></li>
+                    <li><a href="/" class="text-gray-600 hover:text-indigo-600 transition-colors text-sm"><?php echo __('Home', '首页'); ?></a></li>
+                    <li><a href="/news" class="text-gray-600 hover:text-indigo-600 transition-colors text-sm"><?php echo __('News', '新闻动态'); ?></a></li>
+                    <li><a href="/#pricing" class="text-gray-600 hover:text-indigo-600 transition-colors text-sm"><?php echo __('Pricing', '价格方案'); ?></a></li>
                 </ul>
             </div>
 
             <!-- Support Column -->
             <div class="col-span-1">
-                <h4 class="text-gray-900 font-bold mb-6">支持</h4>
+                <h4 class="text-gray-900 font-bold mb-6"><?php echo __('Support', '支持'); ?></h4>
                 <ul class="space-y-4">
-                    <li><a href="/#faq" class="text-gray-600 hover:text-indigo-600 transition-colors text-sm">常见问题</a></li>
-                    <li><a href="/privacy" class="text-gray-600 hover:text-indigo-600 transition-colors text-sm">隐私政策</a></li>
-                    <li><a href="/terms" class="text-gray-600 hover:text-indigo-600 transition-colors text-sm">服务条款</a></li>
+                    <li><a href="/#faq" class="text-gray-600 hover:text-indigo-600 transition-colors text-sm"><?php echo __('FAQ', '常见问题'); ?></a></li>
+                    <li><a href="/privacy" class="text-gray-600 hover:text-indigo-600 transition-colors text-sm"><?php echo __('Privacy Policy', '隐私政策'); ?></a></li>
+                    <li><a href="/terms" class="text-gray-600 hover:text-indigo-600 transition-colors text-sm"><?php echo __('Terms of Service', '服务条款'); ?></a></li>
                 </ul>
             </div>
         </div>
@@ -88,10 +88,10 @@
                 ?>
                 </p>
                 <a href="/sitemap.xml" target="_blank" class="hover:text-indigo-600 transition-colors flex items-center">
-                    <i class="bi bi-map mr-1"></i> 网站地图
+                    <i class="bi bi-map mr-1"></i> <?php echo __('Sitemap', '网站地图'); ?>
                 </a>
                 <a href="/rss.xml" target="_blank" class="hover:text-indigo-600 transition-colors flex items-center">
-                    <i class="bi bi-rss mr-1"></i> RSS 订阅
+                    <i class="bi bi-rss mr-1"></i> <?php echo __('RSS Feed', 'RSS 订阅'); ?>
                 </a>
             </div>
             <div class="flex flex-col md:flex-row items-center gap-4 mt-4 md:mt-0">

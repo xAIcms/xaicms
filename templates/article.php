@@ -55,7 +55,7 @@ window.addEventListener('scroll', () => {
             <nav class="mb-8 text-sm font-medium" aria-label="breadcrumb">
                 <ol class="flex flex-wrap items-center gap-2 text-white/70">
                     <li>
-                        <a href="/" class="hover:text-indigo-300 transition-colors">首页</a>
+                        <a href="/" class="hover:text-indigo-300 transition-colors"><?php echo __('Home', '首页'); ?></a>
                     </li>
 
                     <?php if (!empty($parentCategories)): ?>

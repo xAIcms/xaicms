@@ -76,4 +76,43 @@ return [
     // ── Quick Links ──
     'Quick Links' => 'Quick Links',
     'View Site' => 'View Site',
+
+    // ── Frontend Nav ──
+    'Home' => 'Home',
+    'About' => 'About',
+    'About Us' => 'About Us',
+    'News' => 'News',
+    'Login' => 'Login',
+    'Register' => 'Register',
+    'Logged in' => 'Logged in',
+    'User Center' => 'User Center',
+    'Profile' => 'Profile',
+    'Account Security' => 'Account Security',
+    'Account' => 'Account',
+    'Language' => 'Language',
+    'Browse Articles' => 'Browse Articles',
+
+    // ── Frontend Footer ──
+    'Products' => 'Products',
+    'Support' => 'Support',
+    'Pricing' => 'Pricing',
+    'FAQ' => 'FAQ',
+    'Privacy Policy' => 'Privacy Policy',
+    'Terms of Service' => 'Terms of Service',
+    'Sitemap' => 'Sitemap',
+    'RSS Feed' => 'RSS Feed',
+
+    // ── Contact ──
+    'Contact' => 'Contact',
+    'Email' => 'Email',
+    'Phone' => 'Phone',
+    'Address' => 'Address',
+
+    // ── Home Features ──
+    'Multi-language' => 'Multi-language',
+    'AI Powered' => 'AI Powered',
+    'SEO Optimized' => 'SEO Optimized',
+    'Create content in 14 languages for global SEO.' => 'Create content in 14 languages for global SEO.',
+    'Automated content generation with multiple AI models.' => 'Automated content generation with multiple AI models.',
+    'Built-in Schema.org, sitemap, hreflang and more.' => 'Built-in Schema.org, sitemap, hreflang and more.',
 ];

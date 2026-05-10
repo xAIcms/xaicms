@@ -61,7 +61,7 @@ if ($currentPath === '/index.php') $currentPath = '/';
             
             <!-- Desktop Nav -->
             <div class="hidden lg:flex items-center space-x-6">
-                <a href="/" class="text-sm font-medium uppercase tracking-widest transition-all <?php echo ($currentPath === '/') ? 'text-gray-900' : 'text-gray-600'; ?> hover:text-indigo-600">首页</a>
+                <a href="/" class="text-sm font-medium uppercase tracking-widest transition-all <?php echo ($currentPath === '/') ? 'text-gray-900' : 'text-gray-600'; ?> hover:text-indigo-600"><?php echo __('Home', '首页'); ?></a>
                 <!-- <a href="/news" class="text-sm font-medium uppercase tracking-widest transition-all <?php echo (strpos($currentPath, '/news') === 0) ? 'text-gray-900' : 'text-gray-600'; ?> hover:text-indigo-600">新闻</a> -->
                 <?php foreach (array_slice($menuTree, 0, 6) as $item): ?>
                     <div class="relative group">
@@ -90,7 +90,7 @@ if ($currentPath === '/index.php') $currentPath = '/';
                         <?php endif; ?>
                     </div>
                 <?php endforeach; ?>
-                <a href="/about" class="text-sm font-medium uppercase tracking-widest transition-all <?php echo ($currentPath === '/about') ? 'text-gray-900' : 'text-gray-600'; ?> hover:text-indigo-600">关于我们</a>
+                <a href="/about" class="text-sm font-medium uppercase tracking-widest transition-all <?php echo ($currentPath === '/about') ? 'text-gray-900' : 'text-gray-600'; ?> hover:text-indigo-600"><?php echo __('About', '关于我们'); ?></a>
             </div>
         </div>
 
@@ -140,29 +140,29 @@ if ($currentPath === '/index.php') $currentPath = '/';
                     <div class="absolute right-0 top-full pt-2 w-56 hidden group-hover:block z-50">
                         <div class="bg-white border border-gray-200 rounded-xl shadow-xl overflow-hidden py-2">
                             <div class="px-4 py-2 border-b border-gray-100 mb-2">
-                                <p class="text-xs text-gray-500">已登录</p>
+                                <p class="text-xs text-gray-500"><?php echo __('Logged in', '已登录'); ?></p>
                                 <p class="text-sm font-bold text-gray-900 truncate"><?php echo htmlspecialchars($_SESSION['user_name'] ?? 'User'); ?></p>
                             </div>
                             <a href="/user/center" class="flex items-center px-4 py-2 text-sm font-medium text-gray-600 hover:bg-indigo-50 hover:text-indigo-600 transition-colors">
-                                <i data-lucide="layout-dashboard" class="w-4 h-4 mr-2"></i>用户中心
+                                <i data-lucide="layout-dashboard" class="w-4 h-4 mr-2"></i><?php echo __('User Center', '用户中心'); ?>
                             </a>
                             <a href="/user/profile" class="flex items-center px-4 py-2 text-sm font-medium text-gray-600 hover:bg-indigo-50 hover:text-indigo-600 transition-colors">
-                                <i data-lucide="user" class="w-4 h-4 mr-2"></i>个人资料
+                                <i data-lucide="user" class="w-4 h-4 mr-2"></i><?php echo __('Profile', '个人资料'); ?>
                             </a>
                              <a href="/user/security" class="flex items-center px-4 py-2 text-sm font-medium text-gray-600 hover:bg-indigo-50 hover:text-indigo-600 transition-colors">
-                                <i data-lucide="shield" class="w-4 h-4 mr-2"></i>账户安全
+                                <i data-lucide="shield" class="w-4 h-4 mr-2"></i><?php echo __('Account Security', '账户安全'); ?>
                             </a>
                             <div class="border-t border-gray-100 mt-2 pt-2">
                                 <a href="/logout" class="flex items-center px-4 py-2 text-sm font-medium text-red-600 hover:bg-red-50 transition-colors">
-                                    <i data-lucide="log-out" class="w-4 h-4 mr-2"></i>退出登录
+                                    <i data-lucide="log-out" class="w-4 h-4 mr-2"></i><?php echo __('Logout', '退出登录'); ?>
                                 </a>
                             </div>
                         </div>
                     </div>
                 <?php else: ?>
                     <div class="flex items-center space-x-3">
-                        <a href="/login" class="text-sm font-bold text-gray-600 hover:text-indigo-600 transition-colors">登录</a>
-                        <a href="/register" class="px-4 py-2 text-sm font-bold text-white bg-indigo-600 rounded-xl hover:bg-indigo-700 transition-colors shadow-sm shadow-indigo-200">注册</a>
+                        <a href="/login" class="text-sm font-bold text-gray-600 hover:text-indigo-600 transition-colors"><?php echo __('Login', '登录'); ?></a>
+                        <a href="/register" class="px-4 py-2 text-sm font-bold text-white bg-indigo-600 rounded-xl hover:bg-indigo-700 transition-colors shadow-sm shadow-indigo-200"><?php echo __('Register', '注册'); ?></a>
                     </div>
                 <?php endif; ?>
             </div>
@@ -176,7 +176,7 @@ if ($currentPath === '/index.php') $currentPath = '/';
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white border-b border-gray-200 p-4 shadow-xl z-50 max-h-[calc(100vh-100%)] overflow-y-auto">
         <div class="flex flex-col space-y-4">
-            <a href="/" class="text-sm font-black uppercase tracking-widest <?php echo ($currentPath === '/') ? 'text-indigo-600' : 'text-gray-600'; ?> hover:text-indigo-600">首页</a>
+            <a href="/" class="text-sm font-black uppercase tracking-widest <?php echo ($currentPath === '/') ? 'text-indigo-600' : 'text-gray-600'; ?> hover:text-indigo-600"><?php echo __('Home', '首页'); ?></a>
             <!-- <a href="/news" class="text-sm font-black uppercase tracking-widest <?php echo (strpos($currentPath, '/news') === 0) ? 'text-indigo-600' : 'text-gray-600'; ?> hover:text-indigo-600">新闻</a> -->
             
             <!-- Mobile Categories -->
@@ -207,12 +207,12 @@ if ($currentPath === '/index.php') $currentPath = '/';
             <?php endforeach; ?>
             
             <a href="/about" class="text-sm font-black uppercase tracking-widest <?php echo ($currentPath === '/about') ? 'text-indigo-600' : 'text-gray-600'; ?> hover:text-indigo-600">
-                关于我们
+                <?php echo __('About', '关于我们'); ?>
             </a>
 
             <!-- Mobile User Auth -->
             <div class="pt-4 border-t border-gray-100">
-                <p class="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-3">Account</p>
+                <p class="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-3"><?php echo __('Account', 'Account'); ?></p>
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <div class="flex items-center space-x-3 mb-3">
                         <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold">
@@ -224,21 +224,21 @@ if ($currentPath === '/index.php') $currentPath = '/';
                         </div>
                     </div>
                     <div class="space-y-1">
-                        <a href="/user/center" class="block px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:bg-indigo-50 hover:text-indigo-600">用户中心</a>
-                        <a href="/user/profile" class="block px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:bg-indigo-50 hover:text-indigo-600">个人资料</a>
-                        <a href="/logout" class="block px-3 py-2 rounded-lg text-sm font-medium text-red-600 hover:bg-red-50">退出登录</a>
+                        <a href="/user/center" class="block px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:bg-indigo-50 hover:text-indigo-600"><?php echo __('User Center', '用户中心'); ?></a>
+                        <a href="/user/profile" class="block px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:bg-indigo-50 hover:text-indigo-600"><?php echo __('Profile', '个人资料'); ?></a>
+                        <a href="/logout" class="block px-3 py-2 rounded-lg text-sm font-medium text-red-600 hover:bg-red-50"><?php echo __('Logout', '退出登录'); ?></a>
                     </div>
                 <?php else: ?>
                     <div class="grid grid-cols-2 gap-3">
-                        <a href="/login" class="flex items-center justify-center px-4 py-2 text-sm font-bold text-gray-700 bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors">登录</a>
-                        <a href="/register" class="flex items-center justify-center px-4 py-2 text-sm font-bold text-white bg-indigo-600 rounded-xl hover:bg-indigo-700 transition-colors">注册</a>
+                        <a href="/login" class="flex items-center justify-center px-4 py-2 text-sm font-bold text-gray-700 bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors"><?php echo __('Login', '登录'); ?></a>
+                        <a href="/register" class="flex items-center justify-center px-4 py-2 text-sm font-bold text-white bg-indigo-600 rounded-xl hover:bg-indigo-700 transition-colors"><?php echo __('Register', '注册'); ?></a>
                     </div>
                 <?php endif; ?>
             </div>
             
             <!-- Mobile Language Switcher -->
             <div class="pt-4 border-t border-gray-100">
-                <p class="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-3">Language</p>
+                <p class="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-3"><?php echo __('Language', '语言'); ?></p>
                 <div class="grid grid-cols-3 gap-2">
                     <button onclick="changeLang('en')" class="text-left text-xs font-bold text-gray-500 hover:text-indigo-600">English</button>
                     <button onclick="changeLang('zh-CN')" class="text-left text-xs font-bold text-gray-500 hover:text-indigo-600">中文</button>
