@@ -2,59 +2,51 @@
 
 ## Repo
 https://github.com/xAIcms/xaicms
-Latest: [v1.1.0](https://github.com/xAIcms/xaicms/releases/tag/v1.1.0)
 
-## Architecture
-```
-xAIcms/
-├── src/Core/
-│   ├── Hooks.php      ← Action/filter engine (7 hooks)
-│   ├── Plugin.php      ← Plugin loader + activation
-│   ├── Template.php    ← Template scanning + switching
-│   └── Updater.php     ← GitHub Release update system
-├── plugins/            ← Plugin directory
-│   └── hello/          ← Example plugin (all hooks demo)
-├── templates/          ← Frontend themes + admin templates
-├── public/index.php    ← Entry point
-├── docker-compose.yml
-├── README.md / README_CN.md
-└── PLUGIN_MIGRATION.md  ← 6-plugin extraction roadmap
-```
+## Current State
 
-## Done (v1.1.0)
-- [x] Docker Compose 一键部署
-- [x] Plugin Hook 系统 + 管理面板 + 示例插件
-- [x] Template 系统 + 切换面板
-- [x] GitHub Release 在线更新
-- [x] MIT License + CONTRIBUTING.md
-- [x] 中英双语 README
-- [x] AI 批量生成 (DeepSeek V4 Flash/Pro)
-- [x] AI 设置页 (Provider/Key/Model配置)
-- [x] CMS (Article/Category/Tag/Media + UEditor富文本)
-- [x] Multi-region + Multi-language
-- [x] SEO (Sitemap/RSS/SpiderLogs)
-- [x] User + Points + Recharge
+15 commits / MIT / Docker / 双语 README
 
-## Hook 点 (7个)
-- `article_saved` — 文章保存后
-- `user_registered` — 用户注册后
-- `before_footer` — 页脚前
-- `before_output` — 页面输出前
-- `admin_dashboard_widgets` — 后台仪表盘
-- `admin_menu` — 后台侧栏菜单
-- `article_title` (Filter) — 文章标题
+### Core Systems
+| System | Files |
+|---|---|
+| Hooks | src/Core/Hooks.php — 7 hooks + 1 filter |
+| Plugin | src/Core/Plugin.php — scan, activate, deactivate |
+| Template | src/Core/Template.php — scan, preview, switch |
+| Updater | src/Core/Updater.php — GitHub Release update |
+| Scheduler | src/Core/Scheduler.php — pseudo-cron, BT Panel-style |
 
-## 插件迁移计划 (PLUGIN_MIGRATION.md)
-1. xai-points — 积分充值
-2. xai-schemes — AI 批量方案
-3. xai-announcements — 公告
-4. xai-updates — 系统更新日志
-5. xai-spider-log — 爬虫日志
-6. xai-sms — 短信验证
+### Plugins (6 built-in)
+| Plugin | What it does |
+|---|---|
+| hello | Demo plugin, all hooks example |
+| xai-announcements | Platform notices management |
+| xai-updates | System changelog |
+| xai-spider-log | Bot crawler analytics |
+| xai-sms | SMS verification (Tencent Cloud) |
+| xai-points | Credit packages + recharge orders |
 
-## Coming (v1.2.0+)
+### Features
+- CMS (Article/Category/Tag/Media/UEditor)
+- AI settings (Provider/Key/Model)
+- User management
+- Multi-region (17) + Multi-language (15)
+- SEO (Sitemap/RSS/SpiderLogs)
+- Task scheduler (auto-publish, AI generation)
+- Docker Compose one-line deploy
+
+### Coming (V2)
+- [ ] xai-schemes plugin extraction
 - [ ] JSON REST API
 - [ ] Plugin marketplace
 - [ ] Template marketplace
-- [ ] CLI scaffolding
 - [ ] ProductHunt launch
+
+### Frequency Types
+| Mode | Example |
+|---|---|
+| Every N min | Every 30min |
+| Every N hrs | Every 6h |
+| Daily at time | 08:00 daily |
+| Weekly on days | Mon/Wed/Fri 09:00 |
+| Custom seconds | Any interval |
