@@ -1,7 +1,7 @@
 <?php
 // templates/tag.php
 $pageTitle = '#' . $tag['name'] . ' - ' . $settings['siteName'];
-$pageDescription = '标签 #' . $tag['name'] . ' 下的文章列表';
+$pageDescription = $tag["name"];
 $pageKeywords = $tag['name'];
 include __DIR__ . '/partials/header.php';
 ?>
@@ -20,7 +20,7 @@ include __DIR__ . '/partials/header.php';
                     </div>
                     <div>
                         <h1 class="text-3xl font-bold text-gray-900"># <?php echo htmlspecialchars($tag['name']); ?></h1>
-                        <p class="text-gray-500 mt-1">共找到 <?php echo $total; ?> 篇文章</p>
+                        <p class="text-gray-500 mt-1"><?php echo __f("Found %d articles", $total); ?></p>
                     </div>
                 </div>
             </div>
@@ -32,10 +32,10 @@ include __DIR__ . '/partials/header.php';
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">该标签下暂无文章</h3>
-                    <p class="text-gray-500 mb-8">看看其他标签的文章吧</p>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2"><?php echo __("No articles with this tag yet.", "该标签下暂无文章"); ?></h3>
+                    <p class="text-gray-500 mb-8"><?php echo __("Check out other tags.", "看看其他标签的文章吧"); ?></p>
                     <a href="/" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-xl text-white bg-indigo-600 hover:bg-indigo-700 transition-colors duration-200">
-                        返回首页
+                        <?php echo __("Back to home", "返回首页"); ?>
                     </a>
                 </div>
             <?php else: ?>
@@ -99,7 +99,7 @@ include __DIR__ . '/partials/header.php';
                                             <?php endif; ?>
                                         </div>
                                         <a href="/<?php echo $article['slug']; ?>.html" class="inline-flex items-center gap-1 text-sm font-medium text-indigo-600 hover:text-indigo-700 transition-colors group/link">
-                                            阅读全文
+                                            <?php echo __("Read more", "阅读全文"); ?>
                                             <svg class="w-4 h-4 transform group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                                             </svg>

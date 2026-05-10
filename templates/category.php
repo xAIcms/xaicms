@@ -1,7 +1,7 @@
 <?php
 // templates/category.php
 $pageTitle = $category['name'] . ' - ' . $settings['siteName'];
-$pageDescription = $category['description'] ?: '分类 ' . $category['name'] . ' 下的文章列表';
+$pageDescription = $category["description"] ?: $category["name"];
 $pageKeywords = $category['name'];
 
 // Get Parent Categories Chain
@@ -118,8 +118,8 @@ include __DIR__ . '/partials/header.php';
                     <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gray-100 mb-6">
                         <i class="bi bi-journal-x text-3xl text-gray-400"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">暂无文章</h3>
-                    <p class="text-gray-500">该分类下暂时没有发布任何文章。</p>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2"><?php echo __("No articles yet", "暂无文章"); ?></h3>
+                    <p class="text-gray-500"><?php echo __("No articles in this category yet.", "该分类下暂时没有发布任何文章。"); ?></p>
                 </div>
             <?php endif; ?>
         </div>
@@ -129,7 +129,7 @@ include __DIR__ . '/partials/header.php';
             <!-- Search Widget -->
             <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-200">
                 <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
-                    <i class="bi bi-search mr-2 text-indigo-600"></i> 搜索
+                    <i class="bi bi-search mr-2 text-indigo-600"></i> <?php echo __("Search", "搜索"); ?>
                 </h3>
                 <form action="/search" method="GET" class="relative">
                     <input type="text" name="q" class="w-full bg-gray-50 border border-gray-200 text-gray-900 rounded-xl pl-10 pr-4 py-3 focus:outline-none focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600 transition-all placeholder-gray-400" placeholder="输入关键词...">
@@ -140,7 +140,7 @@ include __DIR__ . '/partials/header.php';
             <!-- Categories Widget -->
             <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-200">
                 <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
-                    <i class="bi bi-grid mr-2 text-indigo-600"></i> 分类导航
+                    <i class="bi bi-grid mr-2 text-indigo-600"></i> <?php echo __("Categories", "分类导航"); ?>
                 </h3>
                 <div class="space-y-2">
                     <?php foreach ($categories as $cat): ?>

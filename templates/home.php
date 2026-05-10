@@ -57,67 +57,23 @@ include __DIR__ . '/partials/header.php';
         </div>
     </section><?php endif; ?>
 
-    <!-- About Section -->
+    <?php $homeAbout = $settings['homepage_about_html'] ?? ''; ?>
+    <?php if ($homeAbout): ?>
     <section class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col lg:flex-row items-center gap-16">
-                <div class="lg:w-1/2">
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800" alt="Team" class="rounded-2xl shadow-2xl">
-                </div>
-                <div class="lg:w-1/2">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">以技术驱动商业变革</h2>
-                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
-                        xAI 成立于 2023 年，我们是一支充满激情的全球化团队。我们的使命是通过前沿的 AI 技术和精准的 GEO 数据，帮助企业打破地域界限，实现真正的全球化运营。
-                    </p>
-                    <a href="/about" class="inline-flex items-center text-indigo-600 font-bold hover:text-indigo-800 transition-colors no-underline">
-                        关于我们 <i class="bi bi-arrow-right ml-2"></i>
-                    </a>
-                </div>
-            </div>
+            <?php echo $homeAbout; ?>
         </div>
     </section>
+    <?php endif; ?>
 
-    <!-- Services Section -->
+    <?php $homeServices = $settings['homepage_services_html'] ?? ''; ?>
+    <?php if ($homeServices): ?>
     <section class="py-24 bg-gray-50">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">核心解决方案</h2>
-                <p class="text-gray-600 text-lg max-w-2xl mx-auto">为您提供一站式的全球化数字增长服务</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Service 1 -->
-                <div class="bg-white p-10 rounded-2xl shadow-sm hover:shadow-xl transition-shadow duration-300">
-                    <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center mb-6 text-blue-600">
-                        <i class="bi bi-globe text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">全球化布局</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        依托强大的 GEO 数据引擎，精准定位目标市场，提供本地化的内容策略和分发渠道。
-                    </p>
-                </div>
-                <!-- Service 2 -->
-                <div class="bg-white p-10 rounded-2xl shadow-sm hover:shadow-xl transition-shadow duration-300">
-                    <div class="w-14 h-14 bg-indigo-50 rounded-xl flex items-center justify-center mb-6 text-indigo-600">
-                        <i class="bi bi-cpu text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">AI 智能中台</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        集成 Gemini 等顶尖大模型，实现内容的自动化生产、优化与分发，大幅降低运营成本。
-                    </p>
-                </div>
-                <!-- Service 3 -->
-                <div class="bg-white p-10 rounded-2xl shadow-sm hover:shadow-xl transition-shadow duration-300">
-                    <div class="w-14 h-14 bg-purple-50 rounded-xl flex items-center justify-center mb-6 text-purple-600">
-                        <i class="bi bi-graph-up text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">数据驱动增长</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        全链路数据监控与分析，提供深度的 SEO 洞察和业务报表，让每一次决策都基于真实数据。
-                    </p>
-            </div>
+            <?php echo $homeServices; ?>
         </div>
     </section>
+    <?php endif; ?>
 
 
 <!-- Latest News / Articles Section -->
@@ -125,12 +81,12 @@ include __DIR__ . '/partials/header.php';
     <div class="max-w-7xl mx-auto px-6">
         <div class="flex items-center justify-between mb-12">
             <h2 class="text-3xl font-bold text-gray-900">
-                <?php echo $page === 1 ? '最新动态' : '文章列表 - 第 ' . $page . ' 页'; ?>
+                <?php echo $page === 1 ? __('Latest News', '最新动态') : __f('Articles - Page %d', $page); ?>
             </h2>
             
             <!-- Category Filter (Simplified) -->
             <div class="hidden md:flex space-x-2">
-                 <a href="/news" class="px-4 py-2 bg-indigo-600 text-white rounded-full text-sm font-bold no-underline">全部</a>
+                 <a href="/news" class="px-4 py-2 bg-indigo-600 text-white rounded-full text-sm font-bold no-underline"><?php echo __('All', '全部'); ?></a>
                  <?php foreach (array_slice($categories ?? [], 0, 4) as $cat): ?>
                     <a href="/<?php echo htmlspecialchars($cat['slug']); ?>.html" class="px-4 py-2 bg-gray-100 text-gray-600 hover:bg-gray-200 rounded-full text-sm font-bold transition-colors no-underline">
                         <?php echo htmlspecialchars($cat['name']); ?>
@@ -164,7 +120,7 @@ include __DIR__ . '/partials/header.php';
                                 <?php echo htmlspecialchars($post['summary'] ?? mb_substr(strip_tags($post['content']), 0, 100)); ?>
                             </p>
                             <a href="/<?php echo htmlspecialchars($post['slug']); ?>.html" class="inline-flex items-center text-indigo-600 font-bold text-sm uppercase tracking-widest hover:text-indigo-800 transition-colors no-underline">
-                                阅读更多 <i class="bi bi-arrow-right ml-2"></i>
+                                <?php echo __('Read more', '阅读更多'); ?> <i class="bi bi-arrow-right ml-2"></i>
                             </a>
                         </div>
                     </article>
@@ -172,7 +128,7 @@ include __DIR__ . '/partials/header.php';
             <?php else: ?>
                 <div class="col-span-3 text-center py-20 border border-dashed border-gray-200 rounded-2xl bg-gray-50">
                     <i class="bi bi-file-text text-4xl text-gray-400 mb-4 block"></i>
-                    <p class="text-gray-500 font-medium">暂无文章发布</p>
+                    <p class="text-gray-500 font-medium"><?php echo __('No articles yet', '暂无文章发布'); ?></p>
                 </div>
             <?php endif; ?>
         </div>
@@ -187,18 +143,15 @@ include __DIR__ . '/partials/header.php';
 </section>
 
 <!-- CTA (Page 1 only) -->
+<?php $homeCta = $settings['homepage_cta_html'] ?? ''; ?>
+<?php if ($homeCta): ?>
 <?php if ($page === 1): ?>
 <section class="py-24 bg-gray-900 text-white">
     <div class="max-w-4xl mx-auto px-6 text-center">
-        <h2 class="text-3xl md:text-5xl font-bold mb-8">携手共创全球未来</h2>
-        <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
-            无论您是寻求增长的企业，还是寻找合作伙伴的机构，我们都期待与您交流。
-        </p>
-        <a href="/contact" class="px-10 py-5 bg-white text-gray-900 rounded-full font-bold text-lg hover:bg-gray-100 transition-colors no-underline">
-            联系我们
-        </a>
+        <?php echo $homeCta; ?>
     </div>
 </section>
+<?php endif; ?>
 <?php endif; ?>
 
 <?php include __DIR__ . '/partials/footer.php'; ?>

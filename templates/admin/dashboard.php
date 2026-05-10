@@ -1,25 +1,25 @@
 <?php
-$title = '控制台';
+$title = __('Dashboard');
 ob_start();
 ?>
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-4">
     <div>
-        <h1 class="h2 fw-bold text-gray-800">仪表盘</h1>
-        <p class="text-muted small mb-0">系统运行概览与统计</p>
+        <h1 class="h2 fw-bold text-gray-800"><?php echo __('Dashboard'); ?></h1>
+        <p class="text-muted small mb-0"><?php echo __('System overview and statistics', '系统运行概览与统计'); ?></p>
     </div>
     <div class="btn-toolbar mb-2 mb-md-0">
         <div class="btn-group me-2 shadow-sm">
             <button type="button" class="btn btn-sm btn-light border">
-                <i class="bi bi-share me-1"></i> 分享
+                <i class="bi bi-share me-1"></i> <?php echo __("Share", "分享"); ?>
             </button>
             <button type="button" class="btn btn-sm btn-light border">
-                <i class="bi bi-download me-1"></i> 导出
+                <i class="bi bi-download me-1"></i> <?php echo __("Export", "导出"); ?>
             </button>
         </div>
         <button type="button" class="btn btn-sm btn-white border shadow-sm dropdown-toggle">
             <i class="bi bi-calendar-event me-1"></i>
-            本周
+            <?php echo __("This Week", "本周"); ?>
         </button>
     </div>
 </div>

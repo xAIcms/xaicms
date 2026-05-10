@@ -109,6 +109,13 @@ ob_start();
                                 <div class="small opacity-50">关于我们、隐私政策、服务条款</div>
                             </div>
                         </button>
+                        <button class="nav-link text-start py-3 px-3 d-flex align-items-center" id="homepage-tab" data-bs-toggle="pill" data-bs-target="#homepage" type="button" role="tab">
+                            <i class="bi bi-house-heart me-2 fs-5"></i>
+                            <div>
+                                <div class="fw-medium">首页布局</div>
+                                <div class="small opacity-50">首页内容区、CTA、落地页</div>
+                            </div>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -554,6 +561,50 @@ ob_start();
                                 <div class="col-12">
                                     <label class="form-label fw-medium">页面内容 (HTML)</label>
                                     <textarea name="settings[terms_content]" class="form-control bg-light border-0" rows="10"><?php echo htmlspecialchars($settings['terms_content'] ?? ''); ?></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 首页布局 -->
+                        <div class="tab-pane fade" id="homepage" role="tabpanel">
+                            <h5 class="card-title fw-bold mb-4 pb-2 border-bottom">首页内容配置</h5>
+                            <p class="text-muted mb-4">设置首页展示的定制内容区域。留空则不显示。</p>
+
+                            <h6 class="fw-bold text-indigo-600 mb-3"><i class="bi bi-blockquote-left me-2"></i>关于我们区</h6>
+                            <div class="row g-3 mb-4">
+                                <div class="col-12">
+                                    <label class="form-label fw-medium">内容 (HTML)</label>
+                                    <textarea name="settings[homepage_about_html]" class="form-control bg-light border-0 font-monospace" rows="6"><?php echo htmlspecialchars($settings['homepage_about_html'] ?? ''); ?></textarea>
+                                    <div class="form-text">首页文章列表上方的品牌介绍区。支持 HTML。</div>
+                                </div>
+                            </div>
+
+                            <h6 class="fw-bold text-indigo-600 mb-3"><i class="bi bi-grid-3x3-gap me-2"></i>服务展示区</h6>
+                            <div class="row g-3 mb-4">
+                                <div class="col-12">
+                                    <label class="form-label fw-medium">内容 (HTML)</label>
+                                    <textarea name="settings[homepage_services_html]" class="form-control bg-light border-0 font-monospace" rows="6"><?php echo htmlspecialchars($settings['homepage_services_html'] ?? ''); ?></textarea>
+                                    <div class="form-text">首页功能/服务展示区。支持 HTML。</div>
+                                </div>
+                            </div>
+
+                            <h6 class="fw-bold text-indigo-600 mb-3"><i class="bi bi-megaphone me-2"></i>底部 CTA 区</h6>
+                            <div class="row g-3 mb-4">
+                                <div class="col-12">
+                                    <label class="form-label fw-medium">内容 (HTML)</label>
+                                    <textarea name="settings[homepage_cta_html]" class="form-control bg-light border-0 font-monospace" rows="4"><?php echo htmlspecialchars($settings['homepage_cta_html'] ?? ''); ?></textarea>
+                                    <div class="form-text">首页底部的 Call-to-Action 区域（深色背景）。仅在首页第1页显示。</div>
+                                </div>
+                            </div>
+
+                            <hr class="my-4">
+
+                            <h6 class="fw-bold text-indigo-600 mb-3"><i class="bi bi-layout-text-window me-2"></i>落地页</h6>
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <label class="form-label fw-medium">落地页内容 (HTML)</label>
+                                    <textarea name="settings[landing_content]" class="form-control bg-light border-0 font-monospace" rows="10"><?php echo htmlspecialchars($settings['landing_content'] ?? ''); ?></textarea>
+                                    <div class="form-text">当首页类型设为"落地页"时显示。留空则自动显示最新文章列表。支持完整 HTML。</div>
                                 </div>
                             </div>
                         </div>

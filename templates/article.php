@@ -79,7 +79,7 @@ window.addEventListener('scroll', () => {
                     <?php else: ?>
                         <li class="text-white/40">/</li>
                         <li>
-                            <a href="/news" class="hover:text-indigo-300 transition-colors">新闻</a>
+                            <a href="/news" class="hover:text-indigo-300 transition-colors"><?php echo __("News", "新闻"); ?></a>
                         </li>
                     <?php endif; ?>
 
@@ -119,11 +119,11 @@ window.addEventListener('scroll', () => {
                 </div>
                 <div class="flex items-center">
                     <i class="bi bi-book w-4 h-4 mr-2 text-indigo-600"></i>
-                    <span><?php echo ceil(mb_strlen($article['content']) / 500); ?> 分钟阅读</span>
+                    <span><?php echo ceil(mb_strlen($article["content"]) / 500); ?> <?php echo __("min read", "分钟阅读"); ?></span>
                 </div>
                 <div class="flex items-center">
                     <i class="bi bi-eye w-4 h-4 mr-2 text-indigo-600"></i>
-                    <span><?php echo $article['views']; ?> 次阅读</span>
+                    <span><?php echo $article["views"]; ?> <?php echo __("views", "次阅读"); ?></span>
                 </div>
             </div>
         </div>
@@ -142,7 +142,7 @@ window.addEventListener('scroll', () => {
                 <div class="bg-indigo-50 border-l-4 border-indigo-500 p-6 mb-10 rounded-r-lg">
                     <h3 class="text-indigo-600 font-bold mb-3 text-sm uppercase tracking-wider flex items-center">
                         <i class="bi bi-book w-4 h-4 mr-2"></i>
-                        文章摘要
+                        <?php echo __("Summary", "文章摘要"); ?>
                     </h3>
                     <p class="text-gray-700 italic leading-relaxed text-lg font-serif">
                         <?php echo htmlspecialchars($article['summary']); ?>
@@ -194,7 +194,7 @@ window.addEventListener('scroll', () => {
                 <div class="mt-12 pt-12 border-t border-gray-200">
                     <h3 class="text-2xl font-bold text-gray-900 mb-8 flex items-center">
                         <i class="bi bi-collection-play w-6 h-6 mr-3 text-indigo-600"></i>
-                        相关推荐
+                        <?php echo __("Related", "相关推荐"); ?>
                     </h3>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <?php foreach ($relatedArticles as $related): ?>
@@ -246,7 +246,7 @@ window.addEventListener('scroll', () => {
             <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-200">
                 <h3 class="font-bold text-gray-900 mb-4 flex items-center text-sm uppercase tracking-wider">
                     <i class="bi bi-lightning-charge w-4 h-4 mr-2 text-[#00f58d]"></i>
-                    最新发布
+                    <?php echo __("Latest", "最新发布"); ?>
                 </h3>
                 <div class="space-y-4">
                     <?php 
@@ -267,7 +267,7 @@ window.addEventListener('scroll', () => {
                     <?php endforeach; ?>
                     
                     <?php if ($shownCount === 0): ?>
-                        <p class="text-xs text-gray-500 italic">暂无更多文章</p>
+                        <p class="text-xs text-gray-500 italic"><?php echo __("No more articles", "暂无更多文章"); ?></p>
                     <?php endif; ?>
                 </div>
             </div>
