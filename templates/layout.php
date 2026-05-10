@@ -40,7 +40,7 @@
     <div class="navbar-nav w-100 justify-content-end px-3">
         <div class="nav-item text-nowrap">
             <a class="nav-link px-3 text-secondary" href="/admin/logout">
-                <i class="bi bi-box-arrow-right me-1"></i> 退出登录
+                <i class="bi bi-box-arrow-right me-1"></i> <?php echo __('Logout'); ?>
             </a>
         </div>
     </div>
@@ -55,7 +55,7 @@
                     <li class="nav-item">
                         <a class="nav-link <?php echo ($_SERVER['REQUEST_URI'] === '/admin' || $_SERVER['REQUEST_URI'] === '/admin/') ? 'active' : ''; ?>" href="/admin">
                             <i class="bi bi-speedometer2 me-2"></i>
-                            控制台
+                            <?php echo __('Dashboard'); ?>
                         </a>
                     </li>
 
@@ -71,22 +71,22 @@
                     ?>
                     <li class="nav-item">
                         <a class="nav-link d-flex align-items-center justify-content-between <?php echo $contentActive ? '' : 'collapsed'; ?>" data-bs-toggle="collapse" href="#menu-content" role="button" aria-expanded="<?php echo $contentActive ? 'true' : 'false'; ?>">
-                            <span><i class="bi bi-collection me-2"></i> 内容管理</span>
+                            <span><i class="bi bi-collection me-2"></i> <?php echo __('Content'); ?></span>
                             <i class="bi bi-chevron-down small transition-transform"></i>
                         </a>
                         <div class="collapse <?php echo $contentActive ? 'show' : ''; ?>" id="menu-content">
                             <ul class="nav flex-column ms-3 border-start ps-2 my-1">
                                 <li class="nav-item">
-                                    <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/articles') !== false) ? 'active' : ''; ?>" href="/admin/articles">文章管理</a>
+                                    <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/articles') !== false) ? 'active' : ''; ?>" href="/admin/articles"><?php echo __('Articles'); ?></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/categories') !== false) ? 'active' : ''; ?>" href="/admin/categories">分类管理</a>
+                                    <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/categories') !== false) ? 'active' : ''; ?>" href="/admin/categories"><?php echo __('Categories'); ?></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/tags') !== false) ? 'active' : ''; ?>" href="/admin/tags">标签管理</a>
+                                    <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/tags') !== false) ? 'active' : ''; ?>" href="/admin/tags"><?php echo __('Tags'); ?></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/media') !== false) ? 'active' : ''; ?>" href="/admin/media">媒体库</a>
+                                    <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/media') !== false) ? 'active' : ''; ?>" href="/admin/media"><?php echo __('Media'); ?></a>
                                 </li>
                             </ul>
                         </div>
@@ -95,7 +95,7 @@
                     <!-- Users -->
                     <li class="nav-item">
                         <a class="nav-link <?php echo (strpos($uri, '/admin/users') !== false) ? 'active' : ''; ?>" href="/admin/users">
-                            <i class="bi bi-people me-2"></i> 用户管理
+                            <i class="bi bi-people me-2"></i> <?php echo __('Users'); ?>
                         </a>
                     </li>
 
@@ -109,19 +109,19 @@
                     ?>
                     <li class="nav-item">
                         <a class="nav-link d-flex align-items-center justify-content-between <?php echo $apiActive ? '' : 'collapsed'; ?>" data-bs-toggle="collapse" href="#menu-api" role="button" aria-expanded="<?php echo $apiActive ? 'true' : 'false'; ?>">
-                            <span><i class="bi bi-cpu me-2"></i> 接口与模型</span>
+                            <span><i class="bi bi-cpu me-2"></i> <?php echo __('AI'); ?></span>
                             <i class="bi bi-chevron-down small transition-transform"></i>
                         </a>
                         <div class="collapse <?php echo $apiActive ? 'show' : ''; ?>" id="menu-api">
                             <ul class="nav flex-column ms-3 border-start ps-2 my-1">
                                 <li class="nav-item">
-                                    <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/api') !== false && strpos($uri, '/admin/ai-models') === false) ? 'active' : ''; ?>" href="/admin/api">API 管理</a>
+                                    <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/api') !== false && strpos($uri, '/admin/ai-models') === false) ? 'active' : ''; ?>" href="/admin/api"><?php echo __('API Config'); ?></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/ai-models') !== false) ? 'active' : ''; ?>" href="/admin/ai-models">AI 模型管理</a>
+                                    <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/ai-models') !== false) ? 'active' : ''; ?>" href="/admin/ai-models"><?php echo __('AI Models'); ?></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/ai-settings') !== false) ? 'active' : ''; ?>" href="/admin/ai-settings">⚙ AI 配置</a>
+                                    <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/ai-settings') !== false) ? 'active' : ''; ?>" href="/admin/ai-settings"><?php echo __('AI Settings'); ?></a>
                                 </li>
                             </ul>
                         </div>
@@ -136,22 +136,22 @@
                     ?>
                     <li class="nav-item">
                         <a class="nav-link d-flex align-items-center justify-content-between <?php echo $opsActive ? '' : 'collapsed'; ?>" data-bs-toggle="collapse" href="#menu-ops" role="button" aria-expanded="<?php echo $opsActive ? 'true' : 'false'; ?>">
-                            <span><i class="bi bi-activity me-2"></i> 运营与维护</span>
+                            <span><i class="bi bi-activity me-2"></i> <?php echo __('System'); ?></span>
                             <i class="bi bi-chevron-down small transition-transform"></i>
                         </a>
                         <div class="collapse <?php echo $opsActive ? 'show' : ''; ?>" id="menu-ops">
                             <ul class="nav flex-column ms-3 border-start ps-2 my-1">
                                 <li class="nav-item">
-                                    <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/schedules') !== false) ? 'active' : ''; ?>" href="/admin/schedules">⏰ 定时任务</a>
+                                    <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/schedules') !== false) ? 'active' : ''; ?>" href="/admin/schedules"><?php echo __('Schedules'); ?></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/templates') !== false) ? 'active' : ''; ?>" href="/admin/templates">🎨 模板管理</a>
+                                    <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/templates') !== false) ? 'active' : ''; ?>" href="/admin/templates"><?php echo __('Templates'); ?></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/update') !== false) ? 'active' : ''; ?>" href="/admin/update">🔄 在线更新</a>
+                                    <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/update') !== false) ? 'active' : ''; ?>" href="/admin/update"><?php echo __('Update'); ?></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/plugins') !== false) ? 'active' : ''; ?>" href="/admin/plugins">🔌 插件管理</a>
+                                    <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/plugins') !== false) ? 'active' : ''; ?>" href="/admin/plugins"><?php echo __('Plugins'); ?></a>
                                 </li>
                             </ul>
                         </div>
@@ -161,7 +161,7 @@
                     <li class="nav-item">
                         <a class="nav-link <?php echo (strpos($uri, '/admin/settings') !== false) ? 'active' : ''; ?>" href="/admin/settings">
                             <i class="bi bi-gear me-2"></i>
-                            系统设置
+                            <?php echo __('Settings'); ?>
                         </a>
                     </li>
             </ul>
@@ -169,13 +169,13 @@
             <?php do_action('admin_menu'); ?>
 
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-2 text-muted text-uppercase small fw-bold">
-                    <span>快捷入口</span>
+                    <span><?php echo __('Quick Links', '快捷入口'); ?></span>
                 </h6>
                 <ul class="nav flex-column mb-2">
                     <li class="nav-item">
                         <a class="nav-link" href="/" target="_blank">
                             <i class="bi bi-box-arrow-up-right me-2"></i>
-                            查看站点
+                            <?php echo __('View Site', '查看站点'); ?>
                         </a>
                     </li>
                 </ul>

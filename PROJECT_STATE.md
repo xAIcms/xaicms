@@ -13,7 +13,13 @@ https://github.com/xAIcms/xaicms
 - PHP 7.3 compatible (polyfills for str_starts_with, str_ends_with, str_contains)
 - `public/index.php` refactored: 1621→~470 lines, same behavior, all routes organized by section
 
-### Language System (v1.1.1)
+### I18n Translation System (v1.1.1)
+- `src/Core/I18n.php` — translation engine, loads PHP array packs
+- `lang/zh-CN.php`, `lang/en-US.php` — dictionary files (55+ keys)
+- `__()` global function — `__('Dashboard')` returns translated string
+- `__f()` for sprintf-style — `__f('Created %d articles', 5)`
+- Auto-loads based on `admin_language` setting
+- `layout.php` sidebar fully translated (all menu items, quick links)
 - 14 languages sorted by cross-border market demand: en-US > ja-JP > ko-KR > de-DE > fr-FR > es-ES > ru-RU > pt-BR > ar-SA > th-TH > vi-VN > id-ID > zh-CN > zh-TW
 - `language` — frontend/public site language, default en-US
 - `admin_language` — admin panel language, default zh-CN, 14 options same as frontend

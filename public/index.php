@@ -99,6 +99,23 @@ try {
     die("Error loading settings: " . $e->getMessage());
 }
 
+// ── I18n Translation System ──
+require_once __DIR__ . '/../src/Core/I18n.php';
+I18n::load($settings['admin_language'] ?? 'zh-CN');
+
+/**
+ * Translate a string. Global shorthand.
+ *
+ * Usage: __('Dashboard') → '控制台' or 'Dashboard'
+ *        __f('Created %d articles', 5) → '创建了 5 篇文章'
+ */
+function __(string $key, string $default = ''): string {
+    return I18n::t($key, $default);
+}
+function __f(string $key, ...$args): string {
+    return I18n::tf($key, ...$args);
+}
+
 // ═══════════════════════════════════════════════════════════════
 // Router Setup
 // ═══════════════════════════════════════════════════════════════
