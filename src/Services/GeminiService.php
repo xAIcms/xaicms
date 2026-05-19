@@ -515,14 +515,12 @@ EOT;
         if (json_last_error() !== JSON_ERROR_NONE) {
             // Log the raw output for debugging
             error_log("Gemini JSON Decode Error: " . json_last_error_msg());
-            error_log("Raw Output: " . substr($generatedText, 0, 1000) . "...");
             
             throw new Exception("Failed to parse JSON output: " . json_last_error_msg() . " - Raw: " . substr($json, 0, 200));
         }
 
         // Validate required fields
         if (empty($data['title'])) {
-             error_log("Gemini Missing Title. Raw Data: " . print_r($data, true));
              throw new Exception("Generated content is missing 'title' field.");
         }
         

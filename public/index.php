@@ -32,6 +32,7 @@ Plugin::loadActive();
 
 // Scheduler tick (runs on every page load, lightweight)
 require_once __DIR__ . '/../src/Core/Scheduler.php';
+require_once __DIR__ . '/../src/Core/Plan.php';
 Scheduler::tick();
 
 // ── Models ──
@@ -225,6 +226,31 @@ $router->group('/user', function(Router $r) {
     });
 });
 
+// ── Settings-Driven Pages ──
+$router->any('/faq', function() use ($settings) {
+    $pageTitle = __('FAQ', '常见问题') . ' - ' . $settings['siteName'];
+    require __DIR__ . '/../templates/faq.php';
+    exit;
+});
+
+$router->any('/about', function() use ($settings) {
+    $pageTitle = __('About Us', '关于我们') . ' - ' . $settings['siteName'];
+    require __DIR__ . '/../templates/about.php';
+    exit;
+});
+
+$router->any('/privacy', function() use ($settings) {
+    $pageTitle = __('Privacy Policy', '隐私政策') . ' - ' . $settings['siteName'];
+    require __DIR__ . '/../templates/privacy.php';
+    exit;
+});
+
+$router->any('/terms', function() use ($settings) {
+    $pageTitle = __('Terms of Service', '服务条款') . ' - ' . $settings['siteName'];
+    require __DIR__ . '/../templates/terms.php';
+    exit;
+});
+
 // ── Admin Routes ──
 $router->group('/admin', function(Router $r) use ($settings) {
 
@@ -249,11 +275,12 @@ $router->group('/admin', function(Router $r) use ($settings) {
             $password = $_POST['password'] ?? '';
             $user = User::findByEmail($email);
             if ($user && User::verifyPassword($user, $password)) {
+                session_regenerate_id(true);
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['user_name'] = $user['name'];
                 $_SESSION['user_role'] = $user['role'];
                 User::updateLoginInfo($user['id'], $_SERVER['REMOTE_ADDR']);
-                header('Location: /admin');
+                header('Location: /admin/articles');
                 exit;
             } else {
                 $error = "邮箱或密码错误";
@@ -305,6 +332,7 @@ $router->group('/admin', function(Router $r) use ($settings) {
         $r2->any('/templates', function() { require __DIR__ . '/../templates/admin/templates_list.php'; exit; });
         $r2->any('/ai-settings', function() { require __DIR__ . '/../templates/admin/ai_settings.php'; exit; });
         $r2->any('/schedules', function() { require __DIR__ . '/../templates/admin/schedules.php'; exit; });
+        $r2->any('/upgrade', function() { require __DIR__ . '/../templates/admin/upgrade.php'; exit; });
         $r2->any('/update', function() { require __DIR__ . '/../templates/admin/update.php'; exit; });
 
         // Articles CRUD

@@ -44,7 +44,6 @@ if (!isset($categories)) {
     
     <!-- Landing Page Assets -->
     <script src="/assets/vendor/lucide/lucide.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
 
     <!-- Bootstrap Icons (Kept for compatibility with existing templates) -->
     <link href="/assets/vendor/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">

@@ -42,6 +42,10 @@ a:hover {
 .text-primary {
     color: var(--primary-color) !important;
 }
+.btn {
+    border-radius: 0.5rem;
+}
+
 .btn-primary {
     background-color: var(--primary-color) !important;
     border-color: var(--primary-color) !important;

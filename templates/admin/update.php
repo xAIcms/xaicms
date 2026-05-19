@@ -1,111 +1,70 @@
 <?php
-// templates/admin/update.php
-// Online update page
+// templates/admin/update.php — Version history & changelog
+$title = '系统更新';
+ob_start();
 
-require_once __DIR__ . '/../../src/Core/Updater.php';
-
-$updater = new Updater();
-$check = $updater->check();
-$message = '';
-$error = '';
-
-// Handle update action
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['do_update'])) {
-    $result = $updater->apply();
-    if ($result['success']) {
-        $message = $result['message'];
-        $check = $updater->check(); // Refresh
-    } else {
-        $error = $result['message'];
-    }
-}
-
-// Handle re-check (clear cache)
-if (isset($_GET['force'])) {
-    $cacheFile = sys_get_temp_dir() . '/xaicms_update_check.json';
-    if (file_exists($cacheFile)) unlink($cacheFile);
-    $check = $updater->check();
-    header('Location: /admin/update');
-    exit;
-}
+$currentVer = $settings['current_version'] ?? '1.0.0';
+$pdo = Database::getInstance()->getConnection();
+$updates = $pdo->query("SELECT * FROM system_updates ORDER BY release_date DESC")->fetchAll();
 ?>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-4 border-bottom">
+    <div>
+        <h1 class="h2 fw-bold text-gray-800">系统更新</h1>
+        <p class="text-muted small mb-0">当前版本：<strong>v<?php echo $currentVer; ?></strong></p>
+    </div>
+    <a href="https://github.com/xAIcms/xaicms/releases" target="_blank" class="btn btn-sm btn-outline-secondary">
+        <i class="bi bi-github me-1"></i> GitHub Releases
+    </a>
+</div>
 
-<div class="container-fluid">
-    <h1 class="mb-4">System Update</h1>
-
-    <?php if ($message): ?>
-        <div class="alert alert-success"><?php echo htmlspecialchars($message); ?></div>
-    <?php endif; ?>
-    <?php if ($error): ?>
-        <div class="alert alert-danger"><?php echo htmlspecialchars($error); ?></div>
-    <?php endif; ?>
-    <?php if (!empty($check['error'])): ?>
-        <div class="alert alert-warning">Update check failed: <?php echo htmlspecialchars($check['error']); ?>. <a href="?force=1">Retry</a></div>
-    <?php endif; ?>
-
-    <!-- Version Card -->
-    <div class="row mb-4">
-        <div class="col-md-4">
-            <div class="card text-center">
-                <div class="card-body">
-                    <h6 class="text-muted">Current Version</h6>
-                    <h2 class="mb-0">v<?php echo htmlspecialchars($check['current']); ?></h2>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card text-center">
-                <div class="card-body">
-                    <h6 class="text-muted">Latest Version</h6>
-                    <h2 class="mb-0 <?php echo $check['has_update'] ? 'text-success' : ''; ?>">
-                        v<?php echo htmlspecialchars($check['latest']); ?>
-                    </h2>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card text-center">
-                <div class="card-body">
-                    <h6 class="text-muted">Status</h6>
-                    <?php if ($check['has_update']): ?>
-                        <h2 class="mb-0 text-warning">Update Available</h2>
-                    <?php else: ?>
-                        <h2 class="mb-0 text-success">Up to Date</h2>
-                    <?php endif; ?>
-                </div>
+<div class="row mb-4">
+    <div class="col-md-4">
+        <div class="card text-center border-0 shadow-sm">
+            <div class="card-body py-4">
+                <h6 class="text-muted text-uppercase small">当前版本</h6>
+                <h2 class="mb-0 fw-bold">v<?php echo $currentVer; ?></h2>
             </div>
         </div>
     </div>
-
-    <?php if ($check['has_update']): ?>
-        <!-- Update Details -->
-        <div class="card mb-4">
-            <div class="card-header">
-                <strong>What's New in v<?php echo htmlspecialchars($check['latest']); ?></strong>
-            </div>
-            <div class="card-body">
-                <pre class="mb-0" style="white-space:pre-wrap;font-size:14px;"><?php echo htmlspecialchars($check['changelog'] ?: 'No changelog provided.'); ?></pre>
+    <div class="col-md-4">
+        <div class="card text-center border-0 shadow-sm">
+            <div class="card-body py-4">
+                <h6 class="text-muted text-uppercase small">最新版本</h6>
+                <h2 class="mb-0 fw-bold text-indigo">v<?php echo $updates ? $updates[0]['version'] : $currentVer; ?></h2>
             </div>
         </div>
-
-        <!-- Update Action -->
-        <div class="card border-warning">
-            <div class="card-body">
-                <h5 class="text-warning">Update from v<?php echo htmlspecialchars($check['current']); ?> to v<?php echo htmlspecialchars($check['latest']); ?></h5>
-                <p class="text-muted">Your data and configuration will be preserved. A backup will be made before update.</p>
-                <form method="POST" onsubmit="return confirm('Are you sure you want to update? A backup will be created automatically.');">
-                    <button type="submit" name="do_update" value="1" class="btn btn-warning btn-lg">
-                        Update Now
-                    </button>
-                </form>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-center border-0 shadow-sm">
+            <div class="card-body py-4">
+                <h6 class="text-muted text-uppercase small">状态</h6>
+                <?php $hasNew = $updates && version_compare($updates[0]['version'], $currentVer, '>'); ?>
+                <h2 class="mb-0 fw-bold <?php echo $hasNew ? 'text-warning' : 'text-success'; ?>">
+                    <?php echo $hasNew ? '有更新可用' : '已是最新'; ?>
+                </h2>
             </div>
         </div>
-    <?php endif; ?>
-
-    <div class="text-end mt-3">
-        <small class="text-muted">
-            Last checked: <?php echo date('Y-m-d H:i:s', $check['checked_at'] ?? time()); ?>
-            <a href="?force=1" class="ms-2">Check again</a>
-        </small>
     </div>
 </div>
+
+<!-- Changelog -->
+<h4 class="fw-bold mb-3"><i class="bi bi-journal-text me-2"></i>更新日志</h4>
+<div class="timeline">
+    <?php foreach ($updates as $u): ?>
+    <div class="card border-0 shadow-sm mb-4">
+        <div class="card-body">
+            <div class="d-flex align-items-center mb-3">
+                <span class="badge bg-indigo fs-6 me-3">v<?php echo $u['version']; ?></span>
+                <small class="text-muted"><?php echo $u['release_date']; ?></small>
+            </div>
+            <div class="ps-2">
+                <?php echo $u['content']; ?>
+            </div>
+        </div>
+    </div>
+    <?php endforeach; ?>
+</div>
+
+<?php
+$content = ob_get_clean();
+include __DIR__ . '/../layout.php';

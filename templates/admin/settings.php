@@ -608,6 +608,27 @@ ob_start();
                                 </div>
                             </div>
                         </div>
+
+                        <hr class="my-4">
+
+                        <h6 class="fw-bold text-indigo-600 mb-3"><i class="bi bi-person-lines-fill me-2"></i>文章侧栏</h6>
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-6">
+                                <label class="form-label fw-medium">作者/开发者名称</label>
+                                <input type="text" name="settings[article_sidebar_name]" value="<?php echo htmlspecialchars($settings['article_sidebar_name'] ?? ''); ?>" class="form-control bg-light border-0">
+                                <div class="form-text">显示在文章侧栏"关于"小部件中的标题。</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-medium">角色/副标题</label>
+                                <input type="text" name="settings[article_sidebar_role]" value="<?php echo htmlspecialchars($settings['article_sidebar_role'] ?? ''); ?>" class="form-control bg-light border-0">
+                                <div class="form-text">例如：Intelligent Editor、AI 内容引擎。</div>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label fw-medium">开发者/作者简介</label>
+                                <textarea name="settings[article_sidebar_bio]" class="form-control bg-light border-0" rows="3"><?php echo htmlspecialchars($settings['article_sidebar_bio'] ?? ''); ?></textarea>
+                                <div class="form-text">显示在文章详情页侧栏的"关于"小部件中。支持换行。</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="card-footer bg-white border-0 py-3 text-end">

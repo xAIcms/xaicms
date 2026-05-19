@@ -152,9 +152,29 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/plugins') !== false) ? 'active' : ''; ?>" href="/admin/plugins"><?php echo __('Plugins'); ?></a>
+                                <li class="nav-item">
+                                    <a class="nav-link py-1 <?php echo (strpos($uri, '/admin/marketplace') !== false) ? 'active' : ''; ?>" href="/admin/marketplace"><i class="bi bi-shop me-1"></i>插件市场</a>
+                                </li>
                                 </li>
                             </ul>
                         </div>
+                    </li>
+
+                    <!-- Upgrade -->
+                    <li class="nav-item">
+                        <a class="nav-link <?php echo (strpos($uri, '/admin/upgrade') !== false) ? 'active' : ''; ?>" href="/admin/upgrade">
+                            <i class="bi bi-arrow-up-circle me-2"></i>升级计划
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?php echo (strpos($uri, '/admin/developer') !== false) ? 'active' : ''; ?>" href="/admin/developer">
+                            <i class="bi bi-code-slash me-2"></i>开发者中心
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?php echo (strpos($uri, '/admin/docs') !== false) ? 'active' : ''; ?>" href="/admin/docs">
+                            <i class="bi bi-book me-2"></i>开发文档
+                        </a>
                     </li>
 
                     <!-- Settings -->

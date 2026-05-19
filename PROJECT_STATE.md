@@ -5,41 +5,41 @@ https://github.com/xAIcms/xaicms
 
 ## Current State
 
-22 commits / MIT / Docker / 双语 README / v1.1.1
+v1.1.0 / MIT / Docker / 10 plugins / 12-Agent audited
 
-### Router
-- `src/Core/Router.php` — lightweight HTTP router, replaces if/else chain
-- Supports: exact match, regex with params, group prefixes, nested groups, middleware, catch-all (/*)
-- PHP 7.3 compatible
-- `public/index.php` refactored: 1621→~470 lines
+### v1.1.0 (2026-05-19) — Major Update
 
-### I18n Translation System
-- `src/Core/I18n.php` — translation engine, PHP array dictionary
-- `lang/zh-CN.php`, `lang/en-US.php` — 131 keys each
-- `__()` global function, `__f()` for sprintf-style
-- Auto-loads based on `admin_language` setting
-- Admin sidebar + frontend navbar/footer/all templates translated
+**New Features:**
+- Plan system: Free / Pro / Enterprise tiers with feature gating
+- Plugin marketplace: 5 built-in + 4 new plugins (SEO analyzer, auto-translate, social share, newsletter)
+- Template marketplace with activate/switch support
+- WeChat Pay V3 integration (Native QR code payment)
+- Developer center: registration, revenue sharing (default 70%), withdrawal
+- Developer documentation
+- Upgrade page with plan comparison
+- Version update notifications in admin dashboard
+- FAQ page, search functionality (/search)
+- Article sidebar bio (database-driven, admin-editable)
+- Product landing page redesign
 
-### Language System
-- 14 languages: en-US > ja-JP > ko-KR > de-DE > fr-FR > es-ES > ru-RU > pt-BR > ar-SA > th-TH > vi-VN > id-ID > zh-CN > zh-TW
-- `language` — frontend site language, default en-US
-- `admin_language` — admin panel language, default zh-CN
-- AI generation language is per-api-config, independent
+**Security Fixes (12-Agent audit):**
+- SQL injection fix (Scheduler.php)
+- Session fixation fix (session_regenerate_id on login)
+- CSRF protection added to tag creation/editing
+- XSS fixes (landing.php, category delete)
+- Removed backdoor files (promote_admin.php)
+- Removed diagnostic tool (check.php)
+- Removed installer directory after installation
+- Plugin controllers now require admin authentication
+- Gemini API key no longer logged
+- Database error messages sanitized
 
-### SEO
-- `hreflang` tags — x-default + page language
-- `BreadcrumbList` Schema.org JSON-LD
-- `/robots.txt` route — settings-driven with auto-default
-- Open Graph + Twitter Card + Canonical + GEO tags
-- Sitemap XML + RSS Feed
-- Article-level SEO fields (seo_title/seo_description/seo_keywords)
-
-### Settings-Driven Pages (admin editable)
-- About page: hero title/desc, HTML content, contact email/phone/address
-- Privacy Policy: title + HTML content
-- Terms of Service: title + HTML content
-- Homepage sections: about, services, CTA — all HTML
-- Landing page: full HTML content, falls back to article list
+**Bug Fixes:**
+- Tag detail page route (/tag/{slug})
+- About/Privacy/Terms/FAQ routes
+- Article page blue→indigo color consistency
+- Footer FAQ link, removed pricing link
+- 404 page template created
 
 ### Core Systems
 | System | Files |
@@ -47,35 +47,45 @@ https://github.com/xAIcms/xaicms
 | Hooks | src/Core/Hooks.php — 7 hooks + 1 filter |
 | Plugin | src/Core/Plugin.php — scan, activate, deactivate |
 | Template | src/Core/Template.php — scan, preview, switch |
-| Updater | src/Core/Updater.php — GitHub Release update |
-| Scheduler | src/Core/Scheduler.php — pseudo-cron |
+| Plan | src/Core/Plan.php — feature gate, tier management |
 | Router | src/Core/Router.php — HTTP router |
 | I18n | src/Core/I18n.php — translation engine |
+| Scheduler | src/Core/Scheduler.php — pseudo-cron |
+| Updater | src/Core/Updater.php — GitHub Release update |
 
-### Plugins (6 built-in)
-| Plugin | What it does |
+### Plugins (10 built-in)
+| Plugin | Status |
 |---|---|
-| hello | Demo plugin, all hooks example |
-| xai-announcements | Platform notices management |
+| hello | Demo plugin |
+| xai-announcements | Platform notices |
 | xai-updates | System changelog |
 | xai-spider-log | Bot crawler analytics |
-| xai-sms | SMS verification (Tencent Cloud) |
-| xai-points | Credit packages + recharge orders |
+| xai-sms | SMS verification |
+| xai-points | Credit packages |
+| xai-seo-analyzer | SEO scoring |
+| xai-auto-translate | Auto translation |
+| xai-social-share | Social sharing |
+| xai-newsletter | Email subscription |
 
-### Features
-- CMS (Article/Category/Tag/Media/UEditor)
-- AI content generation (multi-model, multi-language)
-- User management + points system
-- Multi-language (14) + Multi-region (17)
-- SEO (Sitemap/RSS/SpiderLogs/hreflang/Breadcrumb/OG/Twitter)
-- Task scheduler (auto-publish, AI generation)
-- Docker Compose one-line deploy
-- Online update (GitHub Release)
+### New Models
+- Order.php — payment order tracking
+- Developer.php — developer profile, revenue, withdrawal
+- Plan.php (Core) — feature gate and tier system
+
+### New Services
+- WechatPayService.php — WeChat Pay V3 API
+
+### Database
+- New tables: orders, developers, developer_transactions
+- New settings: plan, plan_features, pricing_*, wx_*, icpBeian
+
+### Live Demo
+https://xaicms.com/
+Admin: admin@xaicms.com / admin123
 
 ### Coming (V2)
-- [ ] xai-schemes plugin extraction (on hold — too coupled with AI engine)
+- [ ] JSON REST API (public)
+- [ ] Plugin marketplace (public listing)
+- [ ] Template marketplace (public listing)
+- [ ] CLI scaffolding (`php xai make:plugin`)
 - [ ] Composer autoload + PSR-4 namespaces
-- [ ] JSON REST API
-- [ ] Plugin marketplace
-- [ ] Template marketplace
-- [ ] ProductHunt launch

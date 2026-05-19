@@ -29,10 +29,12 @@ ob_start();
         <div class="display-6 me-3"><i class="bi bi-emoji-smile"></i></div>
         <div>
             <h4 class="alert-heading fw-bold mb-1">欢迎回来，<?php echo htmlspecialchars($_SESSION['user_name'] ?? '管理员'); ?>！</h4>
-            <p class="mb-0 text-indigo-800">今天是 <?php echo date('Y年m月d日'); ?>。系统运行正常，准备好开始一天的工作了吗？</p>
+            <p class="mb-0 text-indigo-800">今天是 <?php echo date('Y年m月d日'); ?>。当前计划：<strong><?php echo Plan::planName(); ?></strong><?php if(Plan::current()==="free"): ?> · <a href="/admin/upgrade" class="text-warning fw-bold">升级解锁更多功能 →</a><?php endif; ?></p>
         </div>
     </div>
 </div>
+
+<?php include __DIR__ . '/version_notice.php'; ?>
 
 <div class="row g-4 mb-4">
     <div class="col-md-4">
@@ -166,8 +168,26 @@ ob_start();
                         <i class="bi bi-arrow-right opacity-0 group-hover-opacity transition-all"></i>
                     </a>
                     <a href="/" target="_blank" class="btn btn-light btn-lg text-start text-dark border-0 shadow-sm bg-gray-100 p-3 rounded-3 d-flex align-items-center justify-content-between group-hover">
+                    <a href="/" target="_blank" class="btn btn-light btn-lg text-start text-dark border-0 shadow-sm bg-gray-100 p-3 rounded-3 d-flex align-items-center justify-content-between group-hover">
                         <span><i class="bi bi-box-arrow-up-right me-2"></i> 查看站点</span>
                         <i class="bi bi-arrow-right opacity-0 group-hover-opacity transition-all"></i>
+                    </a>
+                    <a href="/admin/upgrade" class="btn btn-warning btn-lg text-start shadow-sm p-3 rounded-3 d-flex align-items-center justify-content-between">
+                        <span><i class="bi bi-arrow-up-circle me-2"></i> 升级计划 <span class="badge bg-dark ms-2">Free</span></span>
+                        <i class="bi bi-chevron-right"></i>
+                    </a>
+                    <a href="/admin/marketplace" class="btn btn-light btn-lg text-start text-dark border-0 shadow-sm bg-gray-100 p-3 rounded-3 d-flex align-items-center justify-content-between">
+                        <span><i class="bi bi-shop me-2"></i> 插件 & 模板市场</span>
+                        <i class="bi bi-chevron-right"></i>
+                    </a>
+                    <a href="/admin/developer" class="btn btn-light btn-lg text-start text-dark border-0 shadow-sm bg-gray-100 p-3 rounded-3 d-flex align-items-center justify-content-between">
+                        <span><i class="bi bi-code-slash me-2"></i> 开发者中心</span>
+                        <i class="bi bi-chevron-right"></i>
+                    </a>
+                    <a href="/admin/docs" class="btn btn-light btn-lg text-start text-dark border-0 shadow-sm bg-gray-100 p-3 rounded-3 d-flex align-items-center justify-content-between">
+                        <span><i class="bi bi-book me-2"></i> 开发文档</span>
+                        <i class="bi bi-chevron-right"></i>
+                    </a>
                     </a>
                 </div>
                 

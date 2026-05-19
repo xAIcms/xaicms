@@ -105,6 +105,12 @@ class Router {
             }
 
             $pattern = $route['pattern'];
+
+            // Also normalize pattern trailing slash (same as URI normalization)
+            if ($pattern !== '/' && str_ends_with($pattern, '/')) {
+                $pattern = rtrim($pattern, '/');
+            }
+
             $params = [];
 
             // Try regex match first

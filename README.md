@@ -1,17 +1,14 @@
 <p align="center">
   <h1>xAI CMS</h1>
-  <p><strong>AI Content Factory</strong> — Batch generate, manage, and distribute global content with AI.</p>
+  <p><strong>AI Content Factory</strong> — Batch generate multilingual SEO content with AI. One prompt, global content.</p>
+  <p><a href="https://xaicms.com">🌐 xaicms.com</a></p>
 </p>
 
 <p align="center">
-  English · <a href="README_CN.md">简体中文</a>
-</p>
-
-<p align="center">
+  <a href="README_CN.md">简体中文</a> · 
   <a href="#quick-start">Quick Start</a> ·
   <a href="#features">Features</a> ·
-  <a href="#docker">Docker</a> ·
-  <a href="#ai-models">AI Models</a> ·
+  <a href="#monetization">Monetization</a> ·
   <a href="#roadmap">Roadmap</a>
 </p>
 
@@ -19,123 +16,119 @@
 
 ## What is xAI CMS?
 
-Not just another CMS. **xAI CMS is an AI-native content factory.**
+**An open-source AI content factory.** Tell it what you need — *"Generate 20 SEO articles about solar panels in English, Japanese, and German"* — and it dispatches AI models to write, optimize, and publish. Multi-language, multi-region, SEO-ready.
 
-Tell it what you need — *"Generate 20 SEO articles about sustainable fashion in English and Japanese"* — and it dispatches AI models to write, optimize, and publish them. Multi-language, multi-region, SEO-ready.
+Think WordPress + Jasper + DeepL, all in one self-hosted package.
 
-Think WordPress + Jasper + DeepL, but built-in.
-
-> **Status**: Early stage. Actively developed. Stars & contributions welcome.
+> **Live demo**: [xaicms.com](https://xaicms.com) | **Admin**: admin@xaicms.com / admin123
 
 ---
 
 ## Quick Start
 
 ```bash
-# Clone
-git clone https://github.com/xAIcms/xAIcms.git
-cd xAIcms
-
-# Docker (recommended)
+git clone https://github.com/xAIcms/xaicms.git
+cd xaicms
 docker-compose up -d
-
 # Open http://localhost:8080
 ```
 
-**That's it.** MySQL and PHP are handled by Docker. No manual setup needed.
+MySQL and PHP included in Docker. Zero config needed.
 
-> **Demo video coming soon.**
+Set `AI_API_KEY` in `docker-compose.yml` to enable AI features. Supports DeepSeek, OpenAI, Claude, and any OpenAI-compatible API.
 
 ---
 
 ## Features
 
-- **AI Batch Generation** — One prompt → N articles. Specify language, region, keywords.
-- **Multi-Region / Multi-Language** — Built-in support for 17 regions and 15 languages.
-- **SEO Automation** — Auto sitemap, meta tags, spider logs, full-text search index.
-- **AI Model Management** — Connect any OpenAI-compatible API. Manage multiple models in admin panel.
-- **Point System** — Credit-based AI usage with recharge packages.
-- **Plugin Architecture** *(coming)* — WordPress-style hooks for extensibility.
-- **Template Marketplace** *(coming)* — One-click theme install.
+### CMS
+- Article CRUD with rich text editor (UEditor)
+- Categories, tags, media library
+- Draft/publish workflow
 
----
+### AI Content Generation
+- Batch generate N articles from a single prompt
+- 14 languages + 17 regions
+- Multi-model support (DeepSeek/OpenAI/Claude)
+- AI scheme management (topic → articles)
 
-## Docker
+### SEO Toolkit
+- Auto sitemap.xml + RSS feed
+- hreflang tags for multilingual sites
+- Schema.org BreadcrumbList JSON-LD
+- Spider/bot visit analytics
+- Per-article SEO meta fields
 
-```yaml
-# docker-compose.yml
-services:
-  app:
-    build: .
-    ports: ["8080:80"]
-    environment:
-      AI_API_KEY: "sk-your-key"       # Set your API key
-      AI_MODEL: "deepseek-v4-flash"   # Lite model
-      AI_PRO_MODEL: "deepseek-v4-pro" # Pro model
-  db:
-    image: mysql:8.0
-```
+### Upgrade & Monetization
+- Three-tier plans: Free / Pro / Enterprise
+- Feature gating per plan level
+- WeChat Pay V3 integration
+- Developer revenue sharing (default 70%)
 
-Set `AI_API_KEY` to your own key, or leave empty and configure in admin panel after install.
+### Plugin Marketplace
+- WordPress-style Hook system (7 actions + 1 filter)
+- 10 built-in plugins (SEO analyzer, auto-translate, social share, newsletter, points, SMS, etc.)
+- Activate/deactivate from admin panel
 
-**Default models**: DeepSeek V4 Flash (fast) + DeepSeek V4 Pro (powerful).
+### Template System
+- Scan, preview, switch templates
+- template.json metadata format
+- Built-in default + blog themes
 
----
+### Developer Center
+- Developer registration + profile
+- Revenue dashboard + withdrawal to WeChat
+- Full developer documentation
 
-## AI Models
-
-| Tier | Model | Use |
-|---|---|---|
-| **Flash** | deepseek-v4-flash | Daily content, fast generation |
-| **Pro** | deepseek-v4-pro | Deep analysis, complex writing |
-
-Supports any OpenAI-compatible API. Switch to GPT-4o, Claude, Gemini, or your own models.
-
-**Free quota**: New installs get 10 free AI generations. After that, bring your own API key or use our token relay service.
+### User & Admin
+- User registration/login (email + phone)
+- Points system + SMS verification
+- Admin dashboard with version update notifications
+- Online update from GitHub Releases
 
 ---
 
 ## Tech Stack
 
-- **Backend**: PHP 8.0+ (no framework — lightweight MVC)
-- **Database**: MySQL 8.0+
-- **AI**: OpenAI-compatible API (DeepSeek, OpenAI, Anthropic, etc.)
-- **Deploy**: Docker, Nginx/Apache, 宝塔面板
+- **Backend**: PHP 8.0+ (hand-written MVC, zero framework)
+- **Database**: MySQL 8.0
+- **AI**: OpenAI-compatible API
+- **Deploy**: Docker, Nginx/Apache, BT Panel
+- **Frontend**: Bootstrap 5, Tailwind CSS, UEditor
+
+**16MB core code, zero framework dependencies.**
+
+---
+
+## Monetization (for SaaS operators)
+
+xAI CMS is MIT-licensed and free forever for self-hosting. For SaaS operators:
+
+1. **Subscription plans** — Free / Pro ($29/mo) / Enterprise ($99/mo)
+2. **API proxy markup** — Charge a margin on AI API calls
+3. **Plugin/Template marketplace** — Revenue share with developers
+4. **SEO agency** — Use xAI CMS to deliver content services
 
 ---
 
 ## Roadmap
 
-- [x] Article CRUD + Categories + Tags
-- [x] Multi-region + multi-language
-- [x] AI batch generation (schemes)
-- [x] Point system + recharge
+- [x] Article CRUD + categories + tags
+- [x] Multi-region + multi-language (14 languages)
+- [x] AI batch content generation
+- [x] Points system + SMS verification
 - [x] Docker deployment
-- [ ] Plugin system (WordPress hooks)
+- [x] WordPress-style Hook plugin system
+- [x] Template management + marketplace
+- [x] Online update (GitHub Release)
+- [x] Upgrade plans (Free/Pro/Enterprise)
+- [x] WeChat Pay integration
+- [x] Developer revenue sharing
+- [x] Developer documentation
 - [ ] JSON REST API
-- [ ] Template marketplace
-- [ ] Plugin marketplace
+- [ ] Plugin marketplace (public)
+- [ ] Template marketplace (public)
 - [ ] CLI scaffolding (`php xai make:plugin`)
-
----
-
-## Why Open Source?
-
-We believe content creation is being fundamentally changed by AI. The tools should be open, composable, and free to self-host. xAI CMS is MIT-licensed and always will be.
-
-We make money from our optional [token relay service](https://xaicms.com) — if you don't want to manage your own API keys, use ours. Otherwise, it's free forever.
-
----
-
-## Contributing
-
-Pull requests welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) (coming soon).
-
-1. Fork
-2. Create feature branch
-3. Commit
-4. Push
-5. Open PR
 
 ---
 
@@ -146,5 +139,5 @@ MIT — free for personal and commercial use.
 ---
 
 <p align="center">
-  <sub>Built with ❤️ by the xAIcms team. Stars make our day ⭐</sub>
+  <sub>Built with ❤️ by <a href="https://github.com/xAIcms">xAIcms</a>. ⭐ Star us on GitHub!</sub>
 </p>

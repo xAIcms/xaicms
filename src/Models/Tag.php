@@ -46,6 +46,18 @@ class Tag {
         return $stmt->fetch();
     }
 
+    public static function getByArticle($articleId) {
+        $pdo = Database::getInstance()->getConnection();
+        $stmt = $pdo->prepare("
+            SELECT t.* FROM tags t
+            JOIN article_tags at ON t.id = at.tag_id
+            WHERE at.article_id = ?
+            ORDER BY t.name
+        ");
+        $stmt->execute([$articleId]);
+        return $stmt->fetchAll();
+    }
+
     public static function create($data) {
         $pdo = Database::getInstance()->getConnection();
         

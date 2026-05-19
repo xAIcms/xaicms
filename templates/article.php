@@ -198,7 +198,7 @@ window.addEventListener('scroll', () => {
                     </h3>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <?php foreach ($relatedArticles as $related): ?>
-                        <a href="/<?php echo $related['slug']; ?>.html" class="group block bg-gray-100 rounded-xl overflow-hidden border border-gray-200 hover:border-blue-300 transition-all duration-300 hover:shadow-lg">
+                        <a href="/<?php echo $related['slug']; ?>.html" class="group block bg-gray-100 rounded-xl overflow-hidden border border-gray-200 hover:border-indigo-300 transition-all duration-300 hover:shadow-lg">
                             <div class="aspect-video w-full overflow-hidden relative">
                                 <img src="<?php echo htmlspecialchars(!empty($related['cover_image']) ? $related['cover_image'] : 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=400'); ?>" 
                                      alt="<?php echo htmlspecialchars($related['title']); ?>" 
@@ -233,12 +233,12 @@ window.addEventListener('scroll', () => {
                         <i class="bi bi-robot"></i>
                     </div>
                     <div>
-                        <h4 class="font-bold text-gray-900">xAI</h4>
-                        <p class="text-xs text-gray-500">Intelligent Editor</p>
+                        <h4 class="font-bold text-gray-900"><?php echo htmlspecialchars($settings['article_sidebar_name'] ?? 'xAI CMS'); ?></h4>
+                        <p class="text-xs text-gray-500"><?php echo htmlspecialchars($settings['article_sidebar_role'] ?? ''); ?></p>
                     </div>
                 </div>
                 <p class="text-sm text-gray-600 leading-relaxed">
-                    gosoraai.com 是全球用户免费使用的专业 Sora2 去水印网站，只需 5 秒即可轻松去除视频水印，无需下载软件，支持高清无损导出，适合视频创作者快速获得无水印 Sora2 视频。
+                    <?php echo nl2br(htmlspecialchars($settings['article_sidebar_bio'] ?? '')); ?>
                 </p>
             </div>
 

@@ -8,7 +8,7 @@ include __DIR__ . '/partials/header.php';
 
 if ($landingContent):
     // Admin-customized landing page
-    echo $landingContent;
+    echo htmlspecialchars($landingContent);
 else:
     // Default: show latest articles
     $latestArticles = Article::getLatest(6);

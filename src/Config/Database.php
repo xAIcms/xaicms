@@ -18,7 +18,7 @@ class Database {
                 PDO::ATTR_EMULATE_PREPARES => false,
             ]);
         } catch (PDOException $e) {
-            die('Database connection failed: ' . $e->getMessage());
+            die('Database connection failed. Please check configuration.');
         }
     }
 

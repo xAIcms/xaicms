@@ -305,6 +305,7 @@ class Scheduler
     {
         self::ensureTable();
         $pdo = Database::getInstance()->getConnection();
-        $pdo->exec("UPDATE schedules SET enabled = NOT enabled WHERE id = $id");
+        $stmt = $pdo->prepare("UPDATE schedules SET enabled = NOT enabled WHERE id = ?");
+        $stmt->execute([$id]);
     }
 }
