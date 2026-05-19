@@ -166,16 +166,6 @@
                             <i class="bi bi-arrow-up-circle me-2"></i>升级计划
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link <?php echo (strpos($uri, '/admin/developer') !== false) ? 'active' : ''; ?>" href="/admin/developer">
-                            <i class="bi bi-code-slash me-2"></i>开发者中心
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link <?php echo (strpos($uri, '/admin/docs') !== false) ? 'active' : ''; ?>" href="/admin/docs">
-                            <i class="bi bi-book me-2"></i>开发文档
-                        </a>
-                    </li>
 
                     <!-- Settings -->
                     <li class="nav-item">

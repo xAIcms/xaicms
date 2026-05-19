@@ -180,15 +180,6 @@ ob_start();
                         <span><i class="bi bi-shop me-2"></i> 插件 & 模板市场</span>
                         <i class="bi bi-chevron-right"></i>
                     </a>
-                    <a href="/admin/developer" class="btn btn-light btn-lg text-start text-dark border-0 shadow-sm bg-gray-100 p-3 rounded-3 d-flex align-items-center justify-content-between">
-                        <span><i class="bi bi-code-slash me-2"></i> 开发者中心</span>
-                        <i class="bi bi-chevron-right"></i>
-                    </a>
-                    <a href="/admin/docs" class="btn btn-light btn-lg text-start text-dark border-0 shadow-sm bg-gray-100 p-3 rounded-3 d-flex align-items-center justify-content-between">
-                        <span><i class="bi bi-book me-2"></i> 开发文档</span>
-                        <i class="bi bi-chevron-right"></i>
-                    </a>
-                    </a>
                 </div>
                 
                 <hr class="my-4 opacity-10">
